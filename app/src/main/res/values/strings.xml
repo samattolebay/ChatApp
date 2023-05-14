@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">ChatClient</string>
+    <string name="welcom">С возвращением!</string>
+    <string name="login_to_continue">Войти в систему</string>
+    <string name="email">Е-майл</string>
+    <string name="password">Пароль</string>
+    <string name="sign_in">Воити</string>
+    <string name="create_new_account">Создать новый аккаунт</string>
+    <string name="add_Image">Создать фото</string>
+    <string name="name">Имя</string>
+    <string name="confirm_password">Повторите пароль</string>
+    <string name="sign_up">Создать</string>
+    <string name="select_users">Сөйлесетін адамды таңдаңыз</string>
+    <string name="type_a_message">Введите сообщение</string>
+    <string name="online">Онлайн</string>
+    <string name="next">Дальше</string>
+    <string name="zareg">Тіркелу</string>
+    <string name="_1">10</string>
+</resources>

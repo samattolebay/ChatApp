@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.store">
+
+    <RelativeLayout
+        android:id="@+id/toolbarRL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_gradient_style"
+        android:padding="10dp">
+
+        <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+            android:id="@+id/profileIV"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_store_gray"
+            app:c_border_color="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/nameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/profileIV"
+            android:text="Store"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <!--Tabs Product ,orders-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/profileIV"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shape_rect_003"
+            android:padding="5dp">
+            <!--Products-->
+            <TextView
+                android:id="@+id/tabShopsTV"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/shape_rect_004"
+                android:gravity="center"
+                android:text="Товары"
+                android:textColor="@color/colorBlack" />
+            <!--Orders-->
+            <TextView
+                android:id="@+id/tabOrdersTV"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Заказы"
+                android:textColor="@color/colorWhite" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/shopsRL2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarRL"
+        >
+        <RelativeLayout
+            android:id="@+id/tovar21"
+            android:layout_below="@+id/tovar2"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+                android:id="@+id/shopIV"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/ic_store_gray"
+                app:c_border="true"
+                app:c_border_color="@color/colorGry02"
+                app:c_border_width="1dp" />
+
+            <!--online / offline status-->
+            <ImageView
+                android:id="@+id/onlineIV"
+                android:layout_width="20dp"
+                android:layout_height="20sp"
+                android:src="@drawable/shape_circle_03" />
+
+            <TextView
+                android:id="@+id/shopClosedTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/nextIV"
+                android:padding="5dp"
+                android:text="Closed"
+                android:background="@drawable/shope_rect06"
+                android:textColor="@color/colorRed"
+                android:textSize="10sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/nextIV"
+                android:layout_toEndOf="@id/shopIV"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/shopNameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:maxLines="1"
+                    android:text="Shop Name"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/phoneTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:maxLines="1"
+                    android:text="Phone"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/addressTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:maxLines="1"
+                    android:text="Address"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:numStars="5"
+                    android:rating="3.5" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/nextIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_next_gray" />
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/tovar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+                android:id="@+id/shop2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/ic_store_gray"
+                app:c_border="true"
+                app:c_border_color="@color/colorGry02"
+                app:c_border_width="1dp" />
+
+            <!--online / offline status-->
+            <ImageView
+                android:id="@+id/online2"
+                android:layout_width="20dp"
+                android:layout_height="20sp"
+                android:src="@drawable/shape_circle_03" />
+
+            <TextView
+                android:id="@+id/shopClosed2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/next2"
+                android:padding="5dp"
+                android:text="Closed"
+                android:background="@drawable/shope_rect06"
+                android:textColor="@color/colorRed"
+                android:textSize="10sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/next2"
+                android:layout_toEndOf="@id/shop2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/shopName2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:maxLines="1"
+                    android:text="Shop Name"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/phone2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:maxLines="1"
+                    android:text="Phone"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/address2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:maxLines="1"
+                    android:text="Address"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <RatingBar
+                    android:id="@+id/ratingBar2"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:numStars="5"
+                    android:rating="3.5" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/next2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_next_gray" />
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/tovar3"
+            android:layout_below="@+id/tovar21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+                android:id="@+id/shop3"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/ic_store_gray"
+                app:c_border="true"
+                app:c_border_color="@color/colorGry02"
+                app:c_border_width="1dp" />
+
+            <!--online / offline status-->
+            <ImageView
+                android:id="@+id/online3"
+                android:layout_width="20dp"
+                android:layout_height="20sp"
+                android:src="@drawable/shape_circle_03" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/next3"
+                android:layout_toEndOf="@id/shop3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/shopName3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:maxLines="1"
+                    android:text="Shop Name"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/phone3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:maxLines="1"
+                    android:text="Phone"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/address3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:maxLines="1"
+                    android:text="Address"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <RatingBar
+                    android:id="@+id/ratingBar3"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:numStars="5"
+                    android:rating="3.5" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/next3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_next_gray" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tovar4"
+            android:layout_below="@+id/tovar3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+                android:id="@+id/shop4"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/ic_store_gray"
+                app:c_border="true"
+                app:c_border_color="@color/colorGry02"
+                app:c_border_width="1dp" />
+
+            <!--online / offline status-->
+            <ImageView
+                android:id="@+id/online4"
+                android:layout_width="20dp"
+                android:layout_height="20sp"
+                android:src="@drawable/shape_circle_03" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/next4"
+                android:layout_toEndOf="@id/shop4"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/shopNameTV4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:maxLines="1"
+                    android:text="Shop Name"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/phone4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:maxLines="1"
+                    android:text="Phone"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/address4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:maxLines="1"
+                    android:text="Address"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <RatingBar
+                    android:id="@+id/ratingBar4"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:numStars="5"
+                    android:rating="3.5" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/next4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_next_gray" />
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/tovar5"
+            android:layout_below="@+id/tovar4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+                android:id="@+id/shop5"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/ic_store_gray"
+                app:c_border="true"
+                app:c_border_color="@color/colorGry02"
+                app:c_border_width="1dp" />
+
+            <!--online / offline status-->
+            <ImageView
+                android:id="@+id/online5"
+                android:layout_width="20dp"
+                android:layout_height="20sp"
+                android:src="@drawable/shape_circle_03" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/next5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/shopName5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="80dp"
+                    android:maxLines="1"
+                    android:text="Shop Name"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/phone5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="80dp"
+                    android:maxLines="1"
+                    android:text="Phone"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/address5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:maxLines="1"
+                    android:layout_marginLeft="80dp"
+
+                    android:text="Address"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <RatingBar
+                    android:id="@+id/ratingBar5"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:numStars="5"
+                    android:rating="3.5" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/next5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_next_gray" />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/ordersRL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarRL">
+
+        <!--recyclerview show orders(newest first)-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ordersRV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:reverseLayout="true"
+            app:stackFromEnd="true"
+            tools:listitem="@layout/row_order_user" />
+    </RelativeLayout>
+
+</RelativeLayout>
