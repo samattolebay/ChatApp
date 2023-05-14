@@ -420,6 +420,7 @@ public class RegisterBuyerActivity extends AppCompatActivity implements Location
         Toast.makeText(this, "Please Wait...", Toast.LENGTH_LONG).show();
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
     }
 
     private boolean checkStoragePermission(){
