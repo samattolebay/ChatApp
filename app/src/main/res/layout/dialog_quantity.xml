@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,7 +15,7 @@
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:src="@drawable/ic_cart_primary"/>
+            android:src="@drawable/ic_cart_primary" />
 
         <TextView
             android:id="@+id/titleTV"
@@ -30,22 +31,22 @@
             android:id="@+id/pQuantityTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_below="@id/titleTV"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:text="Quantity"
-            android:textSize="12dp"
-            android:textColor="@color/colorWhite"/>
+            android:textColor="@color/colorWhite"
+            android:textSize="12dp" />
 
         <TextView
             android:id="@+id/descriptionTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_below="@id/pQuantityTV"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:text="Product Description"
-            android:textColor="@color/colorWhite"/>
+            android:textColor="@color/colorWhite" />
 
         <TextView
             android:id="@+id/discountPercentTV"
@@ -53,11 +54,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_margin="10dp"
+            android:background="@drawable/shap_rect05"
             android:padding="5dp"
             android:text="10% Off"
             android:textColor="@color/colorGreen"
-            android:textSize="12dp"
-            android:background="@drawable/shap_rect05" />
+            android:textSize="12dp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -91,49 +92,49 @@
             android:id="@+id/finalPriceTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             android:layout_alignParentRight="true"
+            android:gravity="start"
+            android:padding="10dp"
             android:text="Final Price"
             android:textAlignment="textStart"
-            android:gravity="start"
             android:textColor="@color/colorBlack" />
 
     </RelativeLayout>
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:gravity="center_horizontal"-->
-<!--        android:layout_marginLeft="10dp"-->
-<!--        android:layout_marginRight="10dp">-->
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:gravity="center_horizontal"-->
+    <!--        android:layout_marginLeft="10dp"-->
+    <!--        android:layout_marginRight="10dp">-->
 
-<!--        <ImageButton-->
-<!--            android:id="@+id/decreaseBtn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center_vertical"-->
-<!--            android:background="@null"-->
-<!--            android:src="@drawable/ic_remove_black"/>-->
+    <!--        <ImageButton-->
+    <!--            android:id="@+id/decreaseBtn"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="center_vertical"-->
+    <!--            android:background="@null"-->
+    <!--            android:src="@drawable/ic_remove_black"/>-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/quantityTV"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="10"-->
-<!--            android:textColor="@color/colorBlack"-->
-<!--            android:textSize="20dp"-->
-<!--            android:padding="2dp" />-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/quantityTV"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="10"-->
+    <!--            android:textColor="@color/colorBlack"-->
+    <!--            android:textSize="20dp"-->
+    <!--            android:padding="2dp" />-->
 
-<!--        <ImageButton-->
-<!--            android:id="@+id/increasBtn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center_vertical"-->
-<!--            android:background="@null"-->
-<!--            android:src="@drawable/ic_add_black"/>-->
+    <!--        <ImageButton-->
+    <!--            android:id="@+id/increasBtn"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="center_vertical"-->
+    <!--            android:background="@null"-->
+    <!--            android:src="@drawable/ic_add_black"/>-->
 
-<!--    </LinearLayout>-->
+    <!--    </LinearLayout>-->
 
     <Button
         android:id="@+id/continueBtn"
@@ -143,7 +144,7 @@
         android:background="@color/colorPrimary"
         android:padding="5dp"
         android:text="Қосу"
-        android:textColor="@color/colorWhite"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
 
 </LinearLayout>

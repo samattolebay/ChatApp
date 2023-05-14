@@ -52,7 +52,7 @@ public class SignInActivityAdmin extends AppCompatActivity {
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful() && task.getResult() != null
-                    && task.getResult().getDocuments().size() > 0) {
+                            && task.getResult().getDocuments().size() > 0) {
                         DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
                         preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_IN, true);
                         preferenceManager.putString(Constants.KEY_USERS_ID, documentSnapshot.getId());
@@ -62,7 +62,7 @@ public class SignInActivityAdmin extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
-                    }else {
+                    } else {
                         loading(false);
                         showToast("Невозможно войти");
                     }
@@ -70,29 +70,30 @@ public class SignInActivityAdmin extends AppCompatActivity {
     }
 
     private void loading(Boolean isLoading) {
-        if(isLoading) {
+        if (isLoading) {
             binding.buttonSignIn.setVisibility(View.INVISIBLE);
             binding.progressBar.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             binding.progressBar.setVisibility(View.INVISIBLE);
             binding.buttonSignIn.setVisibility(View.VISIBLE);
         }
     }
 
-    private void  showToast(String message) {
+    private void showToast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
+
     private Boolean isValidSignInDetails() {
         if (binding.inputEmail.getText().toString().trim().isEmpty()) {
             showToast("Введите адрес электронной почты");
             return false;
-        }else if(!Patterns.EMAIL_ADDRESS.matcher(binding.inputEmail.getText().toString()).matches()) {
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(binding.inputEmail.getText().toString()).matches()) {
             showToast("Введите действующий адрес электронной почты");
             return false;
-        }else if(binding.inputPassword.getText().toString().trim().isEmpty()){
+        } else if (binding.inputPassword.getText().toString().trim().isEmpty()) {
             showToast("Введите пароль");
             return false;
-        }else {
+        } else {
             return true;
         }
     }

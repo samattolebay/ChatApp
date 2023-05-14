@@ -55,7 +55,7 @@ public class MessagingService extends FirebaseMessagingService {
         builder.setAutoCancel(true);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence channelName ="";
+            CharSequence channelName = "";
             String channelDescription = "";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel(channelId, channelName, importance);

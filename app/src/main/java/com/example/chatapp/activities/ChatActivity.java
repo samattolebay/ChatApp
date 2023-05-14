@@ -62,7 +62,7 @@ public class ChatActivity extends BaseActivity {
         loadReceiverDetails();
         init();
         listenMessages();
-            }
+    }
 
     private void init() {
         preferenceManager = new PreferenceManager(getApplicationContext());
@@ -72,8 +72,8 @@ public class ChatActivity extends BaseActivity {
                 getBitmapFromEncodedString(receiverUser.image),
                 preferenceManager.getString(Constants.KEY_USERS_ID)
         );
-    binding.chatRecyclerView.setAdapter(chatAdapter);
-    database = FirebaseFirestore.getInstance();
+        binding.chatRecyclerView.setAdapter(chatAdapter);
+        database = FirebaseFirestore.getInstance();
     }
 
     private void sendMessage() {
@@ -85,8 +85,8 @@ public class ChatActivity extends BaseActivity {
         database.collection(Constants.KEY_COLLECTION_CHAT).add(message);
         if (conversionId != null) {
             updateConversion(binding.inputMessage.getText().toString());
-        }else {
-            HashMap<String , Object> conversion = new HashMap<>();
+        } else {
+            HashMap<String, Object> conversion = new HashMap<>();
             conversion.put(Constants.KEY_SENDER_ID, preferenceManager.getString(Constants.KEY_USERS_ID));
             conversion.put(Constants.KEY_SENDER_NAME, preferenceManager.getString(Constants.KEY_NAME));
             conversion.put(Constants.KEY_SENDER_IMAGE, preferenceManager.getString(Constants.KEY_IMAGE));
@@ -97,7 +97,7 @@ public class ChatActivity extends BaseActivity {
             conversion.put(Constants.KEY_TIMESTAMP, new Date());
             addConversion(conversion);
         }
-        if (!isReceiverAvailable){
+        if (!isReceiverAvailable) {
             try {
                 JSONArray tokens = new JSONArray();
                 tokens.put(receiverUser.token);
@@ -114,7 +114,7 @@ public class ChatActivity extends BaseActivity {
 
                 sendNotification(body.toString());
 
-            }catch (Exception exception) {
+            } catch (Exception exception) {
                 showToast(exception.getMessage());
             }
         }
@@ -143,17 +143,17 @@ public class ChatActivity extends BaseActivity {
                                 return;
                             }
                         }
-                    }catch (JSONException e) {
+                    } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     showToast("Уведомление успешно отправлено");
-                }else {
-                    showToast("Error: " +response.code());
+                } else {
+                    showToast("Error: " + response.code());
                 }
-             }
+            }
 
             @Override
-            public void onFailure(@NonNull Call<String> call,@NonNull Throwable t) {
+            public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
                 showToast(t.getMessage());
             }
         });
@@ -170,7 +170,7 @@ public class ChatActivity extends BaseActivity {
                 if (value.getLong(Constants.KEY_AVAILABILITY) != null) {
                     int availability = Objects.requireNonNull(
                             value.getLong(Constants.KEY_AVAILABILITY)
-                            ).intValue();
+                    ).intValue();
                     isReceiverAvailable = availability == 1;
                 }
                 receiverUser.token = value.getString(Constants.KEY_FCM_TOKEN);
@@ -180,9 +180,9 @@ public class ChatActivity extends BaseActivity {
                     chatAdapter.notifyItemRangeChanged(0, chatMessages.size());
                 }
             }
-            if(isReceiverAvailable) {
+            if (isReceiverAvailable) {
                 binding.textAvailability.setVisibility(View.VISIBLE);
-            }else {
+            } else {
                 binding.textAvailability.setVisibility(View.GONE);
             }
         });
@@ -191,7 +191,7 @@ public class ChatActivity extends BaseActivity {
     private void listenMessages() {
         database.collection(Constants.KEY_COLLECTION_CHAT)
                 .whereEqualTo(Constants.KEY_SENDER_ID, preferenceManager.getString(Constants.KEY_USERS_ID))
-                .whereEqualTo(Constants.KEY_RECEIVER_ID,receiverUser.id)
+                .whereEqualTo(Constants.KEY_RECEIVER_ID, receiverUser.id)
                 .addSnapshotListener(eventListener);
         database.collection(Constants.KEY_COLLECTION_CHAT)
                 .whereEqualTo(Constants.KEY_SENDER_ID, receiverUser.id)
@@ -206,7 +206,7 @@ public class ChatActivity extends BaseActivity {
         if (value != null) {
             int count = chatMessages.size();
             for (DocumentChange documentChange : value.getDocumentChanges()) {
-                if(documentChange.getType() == DocumentChange.Type.ADDED) {
+                if (documentChange.getType() == DocumentChange.Type.ADDED) {
                     ChatMessage chatMessage = new ChatMessage();
                     chatMessage.senderId = documentChange.getDocument().getString(Constants.KEY_SENDER_ID);
                     chatMessage.receiverId = documentChange.getDocument().getString(Constants.KEY_RECEIVER_ID);
@@ -219,7 +219,7 @@ public class ChatActivity extends BaseActivity {
             Collections.sort(chatMessages, (obj1, obj2) -> obj1.dateObject.compareTo(obj2.dateObject));
             if (count == 0) {
                 chatAdapter.notifyDataSetChanged();
-            }else {
+            } else {
                 chatAdapter.notifyItemRangeInserted(chatMessages.size(), chatMessages.size());
                 binding.chatRecyclerView.smoothScrollToPosition(chatMessages.size() - 1);
             }
@@ -235,7 +235,7 @@ public class ChatActivity extends BaseActivity {
         if (encodedImage != null) {
             byte[] bytes = Base64.decode(encodedImage, Base64.DEFAULT);
             return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-        }else {
+        } else {
             return null;
         }
     }
@@ -244,6 +244,7 @@ public class ChatActivity extends BaseActivity {
         receiverUser = (User) getIntent().getSerializableExtra(Constants.KEY_USER);
         binding.textName.setText(receiverUser.name);
     }
+
     private void setListeners() {
         binding.imageBack.setOnClickListener(v -> onBackPressed());
         binding.layoutSend.setOnClickListener(v -> sendMessage());

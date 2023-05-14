@@ -21,7 +21,7 @@ public class tovar1 extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(tovar1.this,Glavny.class));
+                startActivity(new Intent(tovar1.this, Glavny.class));
             }
         });
     }

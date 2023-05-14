@@ -95,11 +95,11 @@ public class LoginActivity extends AppCompatActivity {
         email = emailEt.getText().toString().trim();
         password = passwordEt.getText().toString().trim();
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(this, "Invalid email...", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (TextUtils.isEmpty(password)){
+        if (TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Enter Password...", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -117,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         mProgressDialog.dismiss();
-                        Toast.makeText(LoginActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -126,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
         mProgressDialog.setMessage("Check User...");
 
         HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("online","true");
+        hashMap.put("online", "true");
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
         ref.child(mAuth.getUid()).updateChildren(hashMap)
@@ -140,7 +140,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         mProgressDialog.dismiss();
-                        Toast.makeText(LoginActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -151,14 +151,13 @@ public class LoginActivity extends AppCompatActivity {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot ds : dataSnapshot.getChildren()){
-                            String accountType = ""+ds.child("accountType").getValue();
-                            if(accountType.equals("Seller")){
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            String accountType = "" + ds.child("accountType").getValue();
+                            if (accountType.equals("Seller")) {
                                 mProgressDialog.dismiss();
                                 startActivity(new Intent(LoginActivity.this, MainSellerActivity.class));
                                 finish();
-                            }
-                            else{
+                            } else {
                                 mProgressDialog.dismiss();
                                 startActivity(new Intent(LoginActivity.this, MainBuyerActivity.class));
                                 finish();

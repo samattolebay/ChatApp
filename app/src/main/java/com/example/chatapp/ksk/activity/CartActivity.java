@@ -83,11 +83,11 @@ public class CartActivity extends AppCompatActivity {
         placeOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (myLatitude.equals("") || myLatitude.equals("null") || myLongitude.equals("") || myLongitude.equals("null")){
+                if (myLatitude.equals("") || myLatitude.equals("null") || myLongitude.equals("") || myLongitude.equals("null")) {
                     Toast.makeText(CartActivity.this, "Please enter your address in your profile before placing order", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (myPhone.equals("") || myPhone.equals("null")){
+                if (myPhone.equals("") || myPhone.equals("null")) {
                     Toast.makeText(CartActivity.this, "Please enter your phone number in your profile before placing order", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -185,16 +185,16 @@ public class CartActivity extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot ds : dataSnapshot.getChildren()){
-                            String name = ""+ds.child("name").getValue();
-                            String email = ""+ds.child("email").getValue();
-                            myPhone = ""+ds.child("phone").getValue();
-                            String profileImage = ""+ds.child("profileImage").getValue();
-                            String accountType = ""+ds.child("accountType").getValue();
-                            String city = ""+ds.child("city").getValue();
-                            String deliveryFee = ""+ds.child("deliveryFee").getValue();
-                            myLatitude = ""+ds.child("latitude").getValue();
-                            myLongitude = ""+ds.child("longitude").getValue();
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            String name = "" + ds.child("name").getValue();
+                            String email = "" + ds.child("email").getValue();
+                            myPhone = "" + ds.child("phone").getValue();
+                            String profileImage = "" + ds.child("profileImage").getValue();
+                            String accountType = "" + ds.child("accountType").getValue();
+                            String city = "" + ds.child("city").getValue();
+                            String deliveryFee = "" + ds.child("deliveryFee").getValue();
+                            myLatitude = "" + ds.child("latitude").getValue();
+                            myLongitude = "" + ds.child("longitude").getValue();
                         }
                     }
 
@@ -272,21 +272,21 @@ public class CartActivity extends AppCompatActivity {
         final Double finalSum = sum;
         ref.child(shopId)
                 .addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                deliveryFee = ""+dataSnapshot.child("deliveryFee").getValue();
-                Log.d("delivery fee", deliveryFee);
-                detailDelivery.setText("$"+deliveryFee);
-                detailTotals[0] = finalSum + Double.parseDouble(deliveryFee);
-                detailTotal.setText(String.valueOf(detailTotals[0]));
-            }
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        deliveryFee = "" + dataSnapshot.child("deliveryFee").getValue();
+                        Log.d("delivery fee", deliveryFee);
+                        detailDelivery.setText("$" + deliveryFee);
+                        detailTotals[0] = finalSum + Double.parseDouble(deliveryFee);
+                        detailTotal.setText(String.valueOf(detailTotals[0]));
+                    }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
-        detailCost.setText("$"+sum);
-        grandTotal.setText("$"+String.valueOf(sum)+ " "+"(" + total.size()+")");
+                    }
+                });
+        detailCost.setText("$" + sum);
+        grandTotal.setText("$" + String.valueOf(sum) + " " + "(" + total.size() + ")");
     }
 }

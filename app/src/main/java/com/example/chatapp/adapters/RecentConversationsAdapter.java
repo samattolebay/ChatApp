@@ -16,7 +16,7 @@ import com.example.chatapp.models.User;
 
 import java.util.List;
 
-public class RecentConversationsAdapter extends RecyclerView.Adapter<RecentConversationsAdapter.ConversionViewHolder>{
+public class RecentConversationsAdapter extends RecyclerView.Adapter<RecentConversationsAdapter.ConversionViewHolder> {
 
     private final List<ChatMessage> chatMessages;
     private final ConversionListener conversionListener;
@@ -40,7 +40,7 @@ public class RecentConversationsAdapter extends RecyclerView.Adapter<RecentConve
 
     @Override
     public void onBindViewHolder(@NonNull ConversionViewHolder holder, int position) {
-       holder.setData(chatMessages.get(position));
+        holder.setData(chatMessages.get(position));
     }
 
     @Override
@@ -55,8 +55,9 @@ public class RecentConversationsAdapter extends RecyclerView.Adapter<RecentConve
             super(itemContainerRecentConversionBinding.getRoot());
             binding = itemContainerRecentConversionBinding;
         }
+
         void setData(ChatMessage chatMessage) {
-            binding.imageProfile.setImageBitmap(getConversionImage(chatMessage. conversionImage));
+            binding.imageProfile.setImageBitmap(getConversionImage(chatMessage.conversionImage));
             binding.textName.setText(chatMessage.conversionName);
             binding.textRecentMessage.setText(chatMessage.message);
             binding.getRoot().setOnClickListener(v -> {

@@ -66,6 +66,7 @@ public class ShopReviewActivity extends AppCompatActivity {
     }
 
     private float ratingSum = 0;
+
     private void loadReviews() {
         reviewArrayList = new ArrayList<>();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
@@ -75,9 +76,9 @@ public class ShopReviewActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         reviewArrayList.clear();
                         ratingSum = 0;
-                        for (DataSnapshot ds : dataSnapshot.getChildren()){
-                            float rating = Float.parseFloat(""+ds.child("ratings").getValue());
-                            ratingSum = ratingSum+rating;
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            float rating = Float.parseFloat("" + ds.child("ratings").getValue());
+                            ratingSum = ratingSum + rating;
 
                             ModelReview modelReview = ds.getValue(ModelReview.class);
                             reviewArrayList.add(modelReview);
@@ -87,7 +88,7 @@ public class ShopReviewActivity extends AppCompatActivity {
                         reviewRv.setAdapter(adapterReview);
 
                         long numberOfReview = dataSnapshot.getChildrenCount();
-                        float avgRating = ratingSum/numberOfReview;
+                        float avgRating = ratingSum / numberOfReview;
 
                         ratingTv.setText(String.format("%.2f", avgRating) + "[" + numberOfReview + "]");
                         ratingBar.setRating(avgRating);
@@ -103,25 +104,24 @@ public class ShopReviewActivity extends AppCompatActivity {
     private void loadShopDetails() {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
         ref.child(shopId)
-        .addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String shopName = ""+dataSnapshot.child("shopName").getValue();
-                String profileImage = ""+dataSnapshot.child("profileImage").getValue();
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String shopName = "" + dataSnapshot.child("shopName").getValue();
+                        String profileImage = "" + dataSnapshot.child("profileImage").getValue();
 
-                shopNameTv.setText(shopName);
-                try {
-                    Picasso.get().load(profileImage).placeholder(R.drawable.ic_store_gray).into(profileIv);
-                }
-                catch (Exception e) {
-                    profileIv.setImageResource(R.drawable.ic_store_gray);
-                }
-            }
+                        shopNameTv.setText(shopName);
+                        try {
+                            Picasso.get().load(profileImage).placeholder(R.drawable.ic_store_gray).into(profileIv);
+                        } catch (Exception e) {
+                            profileIv.setImageResource(R.drawable.ic_store_gray);
+                        }
+                    }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                    }
+                });
     }
 }

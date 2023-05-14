@@ -67,22 +67,19 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.HolderShop> {
         holder.shopNameTv.setText(shopName);
         holder.phoneTv.setText(phone);
         holder.addressTv.setText(address);
-        if (online.equals("true")){
+        if (online.equals("true")) {
             holder.onlineIv.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             holder.onlineIv.setVisibility(View.GONE);
         }
-        if (shopOpen.equals("true")){
+        if (shopOpen.equals("true")) {
             holder.shopClosedTv.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             holder.shopClosedTv.setVisibility(View.VISIBLE);
         }
         try {
             Picasso.get().load(profileImage).placeholder(R.drawable.ic_store_gray).into(holder.shopIv);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             holder.shopIv.setImageResource(R.drawable.ic_store_gray);
         }
 
@@ -98,6 +95,7 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.HolderShop> {
     }
 
     private float ratingSum = 0;
+
     private void loadReviews(ModelShop modelShop, final HolderShop holder) {
 
         String shopUid = modelShop.getUid();
@@ -109,13 +107,13 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.HolderShop> {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                         ratingSum = 0;
-                        for (DataSnapshot ds : dataSnapshot.getChildren()){
-                            float rating = Float.parseFloat(""+ds.child("ratings").getValue());
-                            ratingSum = ratingSum+rating;
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            float rating = Float.parseFloat("" + ds.child("ratings").getValue());
+                            ratingSum = ratingSum + rating;
                         }
 
                         long numberOfReview = dataSnapshot.getChildrenCount();
-                        float avgRating = ratingSum/numberOfReview;
+                        float avgRating = ratingSum / numberOfReview;
                         holder.ratingBar.setRating(avgRating);
                     }
 
@@ -131,7 +129,7 @@ public class AdapterShop extends RecyclerView.Adapter<AdapterShop.HolderShop> {
         return shopList.size();
     }
 
-    class HolderShop extends RecyclerView.ViewHolder{
+    class HolderShop extends RecyclerView.ViewHolder {
 
         private ImageView shopIv, onlineIv, nextIv;
         private TextView shopClosedTv, shopNameTv, phoneTv, addressTv;

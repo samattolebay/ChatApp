@@ -53,7 +53,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 FirebaseUser user = mAuth.getCurrentUser();
-                if (user == null){
+                if (user == null) {
                     Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
 //                    Pair[] pairs = new Pair[2];
 //                    pairs[0] = new Pair<View, String>(iconeIV, "logo_image");
@@ -66,8 +66,7 @@ public class SplashActivity extends AppCompatActivity {
 //                    }
                     startActivity(intent);
                     finish();
-                }
-                else {
+                } else {
                     checkUserType();
                 }
             }
@@ -81,15 +80,14 @@ public class SplashActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //                        for (DataSnapshot ds : dataSnapshot.getChildren()){}
-                        String accountType = ""+dataSnapshot.child("accountType").getValue();
-                            if(accountType.equals("Seller")){
-                                startActivity(new Intent(SplashActivity.this, MainSellerActivity.class));
-                                finish();
-                            }
-                            else{
-                                startActivity(new Intent(SplashActivity.this, MainBuyerActivity.class));
-                                finish();
-                            }
+                        String accountType = "" + dataSnapshot.child("accountType").getValue();
+                        if (accountType.equals("Seller")) {
+                            startActivity(new Intent(SplashActivity.this, MainSellerActivity.class));
+                            finish();
+                        } else {
+                            startActivity(new Intent(SplashActivity.this, MainBuyerActivity.class));
+                            finish();
+                        }
                     }
 
                     @Override

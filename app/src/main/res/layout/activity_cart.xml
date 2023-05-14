@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CartActivity">
+    tools:context=".ksk.activity.CartActivity">
 
     <RelativeLayout
         android:id="@+id/RL1"
@@ -67,12 +67,12 @@
                 android:id="@+id/view01"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_below="@id/cartItemRV"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
-                android:background="@color/colorGray01"
-                android:layout_below="@id/cartItemRV"/>
+                android:layout_marginBottom="5dp"
+                android:background="@color/colorGray01" />
 
             <TableLayout
                 android:id="@+id/tableLayout"
@@ -84,59 +84,68 @@
                 android:layout_marginBottom="40dp">
 
                 <TableRow>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Баға туралы толық ақпарат"
-                        android:textStyle="bold"
+                        android:textColor="@color/colorGray01"
                         android:textSize="18dp"
-                        android:textColor="@color/colorGray01"/>
+                        android:textStyle="bold" />
                 </TableRow>
 
                 <TableRow>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Бағасы"
-                        android:textSize="15dp"
-                        android:textColor="@color/colorBlack"/>
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15dp" />
+
                     <TextView
                         android:id="@+id/detailCost"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="00.0"
-                        android:textSize="15dp"
-                        android:textColor="@color/colorBlack"/>
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15dp" />
                 </TableRow>
+
                 <TableRow>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Жеткізу ақысы"
-                        android:textSize="15dp"
-                        android:textColor="@color/colorBlack"/>
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15dp" />
+
                     <TextView
                         android:id="@+id/detailDelivery"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="00.0"
-                        android:textSize="15dp"
-                        android:textColor="@color/colorBlack"/>
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15dp" />
                 </TableRow>
+
                 <TableRow>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Толық суммасы"
-                        android:textSize="15dp"
-                        android:textColor="@color/colorBlack"/>
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15dp" />
+
                     <TextView
                         android:id="@+id/detailTotal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="00.0"
-                        android:textSize="15dp"
-                        android:textColor="@color/colorBlack"/>
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15dp" />
                 </TableRow>
 
             </TableLayout>
@@ -148,12 +157,12 @@
         android:id="@+id/view02"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_below="@id/sv"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
-        android:background="@color/colorGray01"
-        android:layout_below="@id/sv"/>
+        android:layout_marginBottom="5dp"
+        android:background="@color/colorGray01" />
 
     <LinearLayout
         android:id="@+id/LL"
@@ -161,16 +170,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="5dp"
-        android:orientation="horizontal"
         android:elevation="6dp"
+        android:orientation="horizontal"
         android:padding="2dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
             android:layout_weight="1"
-            android:layout_marginLeft="20dp">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/grandTotalTV"
@@ -197,8 +206,8 @@
             android:layout_marginTop="2dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="2dp"
-            android:minWidth="120dp"
             android:background="@drawable/shape_rect06"
+            android:minWidth="120dp"
             android:padding="5dp"
             android:text="Тапсырыс беру"
             android:textColor="@color/colorWhite" />

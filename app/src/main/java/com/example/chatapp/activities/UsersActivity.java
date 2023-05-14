@@ -19,7 +19,7 @@ import java.util.List;
 public class UsersActivity extends BaseActivity implements UserListener {
 
     private ActivityUsersBinding binding;
-    private PreferenceManager preferenceManager; 
+    private PreferenceManager preferenceManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class UsersActivity extends BaseActivity implements UserListener {
                     String currentUserId = preferenceManager.getString(Constants.KEY_USERS_ID);
                     if (task.isSuccessful() && task.getResult() != null) {
                         List<User> users = new ArrayList<>();
-                        for (QueryDocumentSnapshot queryDocumentSnapshot: task.getResult()) {
+                        for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
                             if (currentUserId.equals(queryDocumentSnapshot.getId())) {
                                 continue;
                             }
@@ -57,14 +57,14 @@ public class UsersActivity extends BaseActivity implements UserListener {
                             user.id = queryDocumentSnapshot.getId();
                             users.add(user);
                         }
-                        if (users.size() >0) {
+                        if (users.size() > 0) {
                             UsersAdapter usersAdapter = new UsersAdapter(users, this);
                             binding.usersRecyclerView.setAdapter(usersAdapter);
                             binding.usersRecyclerView.setVisibility(View.VISIBLE);
-                        }else {
+                        } else {
                             showErrorMessage();
                         }
-                    }else {
+                    } else {
                         showErrorMessage();
                     }
                 });
@@ -75,10 +75,10 @@ public class UsersActivity extends BaseActivity implements UserListener {
         binding.textErrorMessage.setVisibility(View.VISIBLE);
     }
 
-    private void  loading(Boolean isLoading) {
+    private void loading(Boolean isLoading) {
         if (isLoading) {
             binding.progressBar.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             binding.progressBar.setVisibility(View.INVISIBLE);
         }
     }
@@ -86,7 +86,7 @@ public class UsersActivity extends BaseActivity implements UserListener {
     @Override
     public void onUserClicked(User user) {
         Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
-        intent.putExtra(Constants.KEY_USER,user);
+        intent.putExtra(Constants.KEY_USER, user);
         startActivity(intent);
         finish();
     }

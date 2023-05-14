@@ -34,14 +34,14 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class ShopDetailsActivity extends AppCompatActivity {
-    
+
     private ImageView shopIv;
     private TextView shopNameTv, phoneTv, emailTv, openCloseTv, deliveryFeeTv, addressTv, filterProductTv, cartCountTv;
     private EditText searchProductEt;
     private ImageButton backBtn, cartBtn, callBtn, mapBtn, filterProductBtn, reviewsBtn;
     private RecyclerView productRv;
     private RatingBar ratingBar;
-    
+
     private String shopUid;
     private String myLatitude, myLongitude;
     private String shopName, shopPhone, shopEmail, shopAddress, shopLatitude, shopLongitude;
@@ -56,7 +56,7 @@ public class ShopDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_details);
-        
+
         shopIv = findViewById(R.id.shopIV);
         shopNameTv = findViewById(R.id.shopNameTV);
         phoneTv = findViewById(R.id.phoneTV);
@@ -75,15 +75,15 @@ public class ShopDetailsActivity extends AppCompatActivity {
         productRv = findViewById(R.id.productRV);
         cartCountTv = findViewById(R.id.cartCounterTV);
         ratingBar = findViewById(R.id.ratingBar);
-        
+
         mAuth = FirebaseAuth.getInstance();
         shopUid = getIntent().getStringExtra("shopUid");
-        
+
         loadMyInfo();
         loadShopDetails();
         loadShopProducts();
         loadReviews();
-        
+
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,10 +124,9 @@ public class ShopDetailsActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 String selected = Constants.productCategories1[which];
                                 filterProductTv.setText(selected);
-                                if (selected.equals("All")){
+                                if (selected.equals("All")) {
                                     loadShopProducts();
-                                }
-                                else {
+                                } else {
                                     adapterProductBuyer.getFilter().filter(selected);
                                 }
                             }
@@ -145,8 +144,7 @@ public class ShopDetailsActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
                     adapterProductBuyer.getFilter().filter(s);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -168,6 +166,7 @@ public class ShopDetailsActivity extends AppCompatActivity {
     }
 
     private float ratingSum = 0;
+
     private void loadReviews() {
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
@@ -177,13 +176,13 @@ public class ShopDetailsActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                         ratingSum = 0;
-                        for (DataSnapshot ds : dataSnapshot.getChildren()){
-                            float rating = Float.parseFloat(""+ds.child("ratings").getValue());
-                            ratingSum = ratingSum+rating;
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            float rating = Float.parseFloat("" + ds.child("ratings").getValue());
+                            ratingSum = ratingSum + rating;
                         }
 
                         long numberOfReview = dataSnapshot.getChildrenCount();
-                        float avgRating = ratingSum/numberOfReview;
+                        float avgRating = ratingSum / numberOfReview;
                         ratingBar.setRating(avgRating);
                     }
 
@@ -195,12 +194,12 @@ public class ShopDetailsActivity extends AppCompatActivity {
     }
 
     private void dialPhone() {
-        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+Uri.encode(shopPhone))));
-        Toast.makeText(this, ""+shopPhone, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + Uri.encode(shopPhone))));
+        Toast.makeText(this, "" + shopPhone, Toast.LENGTH_SHORT).show();
     }
 
     private void openMap() {
-        String address = "https://maps.google.com/maps?saddr="+myLatitude+","+myLongitude+"&daddr="+shopLatitude+","+shopLongitude;
+        String address = "https://maps.google.com/maps?saddr=" + myLatitude + "," + myLongitude + "&daddr=" + shopLatitude + "," + shopLongitude;
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(address));
         startActivity(intent);
     }
@@ -215,7 +214,7 @@ public class ShopDetailsActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                         productList.clear();
-                        for (DataSnapshot ds : dataSnapshot.getChildren()){
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
                             ModelProduct modelProduct = ds.getValue(ModelProduct.class);
                             productList.add(modelProduct);
                         }
@@ -236,32 +235,30 @@ public class ShopDetailsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                String name = ""+dataSnapshot.child("name").getValue();
-                shopName = ""+dataSnapshot.child("shopName").getValue();
-                shopEmail = ""+dataSnapshot.child("email").getValue();
-                shopPhone = ""+dataSnapshot.child("phone").getValue();
-                shopAddress = ""+dataSnapshot.child("address").getValue();
-                shopLatitude = ""+dataSnapshot.child("latitude").getValue();
-                shopLongitude = ""+dataSnapshot.child("longitude").getValue();
-                String deliveryFee = ""+dataSnapshot.child("deliveryFee").getValue();
-                String profileImage = ""+dataSnapshot.child("profileImage").getValue();
-                String shopOpen = ""+dataSnapshot.child("shopOpen").getValue();
+                String name = "" + dataSnapshot.child("name").getValue();
+                shopName = "" + dataSnapshot.child("shopName").getValue();
+                shopEmail = "" + dataSnapshot.child("email").getValue();
+                shopPhone = "" + dataSnapshot.child("phone").getValue();
+                shopAddress = "" + dataSnapshot.child("address").getValue();
+                shopLatitude = "" + dataSnapshot.child("latitude").getValue();
+                shopLongitude = "" + dataSnapshot.child("longitude").getValue();
+                String deliveryFee = "" + dataSnapshot.child("deliveryFee").getValue();
+                String profileImage = "" + dataSnapshot.child("profileImage").getValue();
+                String shopOpen = "" + dataSnapshot.child("shopOpen").getValue();
 
                 shopNameTv.setText(shopName);
                 emailTv.setText(shopEmail);
-                deliveryFeeTv.setText("Delivery Fee: $"+deliveryFee);
+                deliveryFeeTv.setText("Delivery Fee: $" + deliveryFee);
                 addressTv.setText(shopAddress);
                 phoneTv.setText(shopPhone);
-                if (shopOpen.equals("true")){
+                if (shopOpen.equals("true")) {
                     openCloseTv.setText("Open");
-                }
-                else {
+                } else {
                     openCloseTv.setText("Closed");
                 }
                 try {
                     Picasso.get().load(profileImage).into(shopIv);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
 
                 }
             }
@@ -279,15 +276,15 @@ public class ShopDetailsActivity extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot ds : dataSnapshot.getChildren()){
-                            String name = ""+ds.child("name").getValue();
-                            String email = ""+ds.child("email").getValue();
-                            String phone = ""+ds.child("phone").getValue();
-                            String profileImage = ""+ds.child("profileImage").getValue();
-                            String accountType = ""+ds.child("accountType").getValue();
-                            String city = ""+ds.child("city").getValue();
-                            myLatitude = ""+ds.child("latitude").getValue();
-                            myLongitude = ""+ds.child("longitude").getValue();
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            String name = "" + ds.child("name").getValue();
+                            String email = "" + ds.child("email").getValue();
+                            String phone = "" + ds.child("phone").getValue();
+                            String profileImage = "" + ds.child("profileImage").getValue();
+                            String accountType = "" + ds.child("accountType").getValue();
+                            String city = "" + ds.child("city").getValue();
+                            myLatitude = "" + ds.child("latitude").getValue();
+                            myLongitude = "" + ds.child("longitude").getValue();
 
                         }
                     }
@@ -301,11 +298,11 @@ public class ShopDetailsActivity extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()){
+                        if (dataSnapshot.exists()) {
                             cartCountTv.setVisibility(View.VISIBLE);
                             count = (int) dataSnapshot.getChildrenCount();
                             cartCountTv.setText(String.valueOf(count));
-                        }else {
+                        } else {
                             cartCountTv.setVisibility(View.GONE);
                         }
                     }

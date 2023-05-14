@@ -78,14 +78,13 @@ public class WriteReviewActivity extends AppCompatActivity {
         ref.child(shopUid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String shopName = ""+dataSnapshot.child("shopName").getValue();
-                String shopImage = ""+dataSnapshot.child("profileImage").getValue();
+                String shopName = "" + dataSnapshot.child("shopName").getValue();
+                String shopImage = "" + dataSnapshot.child("profileImage").getValue();
 
                 shopNameTv.setText(shopName);
                 try {
                     Picasso.get().load(shopImage).placeholder(R.drawable.ic_store_gray).into(profileIv);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     profileIv.setImageResource(R.drawable.ic_store_gray);
                 }
             }
@@ -103,11 +102,11 @@ public class WriteReviewActivity extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()){
-                            String uid = ""+dataSnapshot.child("uid").getValue();
-                            String rating = ""+dataSnapshot.child("ratings").getValue();
-                            String review = ""+dataSnapshot.child("review").getValue();
-                            String timestamp = ""+dataSnapshot.child("timestamp").getValue();
+                        if (dataSnapshot.exists()) {
+                            String uid = "" + dataSnapshot.child("uid").getValue();
+                            String rating = "" + dataSnapshot.child("ratings").getValue();
+                            String review = "" + dataSnapshot.child("review").getValue();
+                            String timestamp = "" + dataSnapshot.child("timestamp").getValue();
 
                             float myRating = Float.parseFloat(rating);
                             ratingBar.setRating(myRating);
@@ -123,16 +122,16 @@ public class WriteReviewActivity extends AppCompatActivity {
     }
 
     private void inputData() {
-        String ratings = ""+ratingBar.getRating();
+        String ratings = "" + ratingBar.getRating();
         String review = reviewEt.getText().toString().trim();
 
-        String timestamp = ""+System.currentTimeMillis();
+        String timestamp = "" + System.currentTimeMillis();
 
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("uid", mAuth.getUid());
-        hashMap.put("ratings", ""+ratings);
-        hashMap.put("review", ""+review);
-        hashMap.put("timestamp", ""+timestamp);
+        hashMap.put("ratings", "" + ratings);
+        hashMap.put("review", "" + review);
+        hashMap.put("timestamp", "" + timestamp);
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
         ref.child(shopUid).child("Ratings").child(mAuth.getUid()).updateChildren(hashMap)
@@ -145,7 +144,7 @@ public class WriteReviewActivity extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(WriteReviewActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(WriteReviewActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }

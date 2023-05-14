@@ -28,7 +28,6 @@ import java.util.HashMap;
 public class SignUpUserActivity extends AppCompatActivity {
 
 
-
     private ActivitySignUserUpBinding binding;
     public PreferenceManager preferenceManager;
     private String encodedImage;
@@ -45,7 +44,7 @@ public class SignUpUserActivity extends AppCompatActivity {
     private void setListeners() {
         binding.textSignIn.setOnClickListener(v -> onBackPressed());
         binding.buttonSignUp.setOnClickListener(v -> {
-            if (isValidSignUpDetails()){
+            if (isValidSignUpDetails()) {
                 signUp();
             }
         });
@@ -63,7 +62,7 @@ public class SignUpUserActivity extends AppCompatActivity {
     private void signUp() {
         loading(true);
         FirebaseFirestore database = FirebaseFirestore.getInstance();
-        HashMap<String,Object> user = new HashMap<>();
+        HashMap<String, Object> user = new HashMap<>();
         user.put(Constants.KEY_NAME, binding.inputName.getText().toString());
         user.put(Constants.KEY_EMAIL, binding.inputEmail.getText().toString());
         user.put(Constants.KEY_PASSWORD, binding.inputPassword.getText().toString());
@@ -100,54 +99,55 @@ public class SignUpUserActivity extends AppCompatActivity {
 
     private final ActivityResultLauncher<Intent> pickImage = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             result -> {
-        if (result.getResultCode()== RESULT_OK){
-            if (result.getData() != null){
-                Uri imageUri = result.getData().getData();
-                try {
-                    InputStream inputStream = getContentResolver().openInputStream(imageUri);
-                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                    binding.imageProfile.setImageBitmap(bitmap);
-                    binding.textAddImage.setVisibility(View.GONE);
-                    encodedImage = encodeImage(bitmap);
-                }catch (FileNotFoundException e){
-                    e.printStackTrace();
+                if (result.getResultCode() == RESULT_OK) {
+                    if (result.getData() != null) {
+                        Uri imageUri = result.getData().getData();
+                        try {
+                            InputStream inputStream = getContentResolver().openInputStream(imageUri);
+                            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                            binding.imageProfile.setImageBitmap(bitmap);
+                            binding.textAddImage.setVisibility(View.GONE);
+                            encodedImage = encodeImage(bitmap);
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
-            }
-        }
 
-    });
-    private Boolean isValidSignUpDetails(){
-    if(encodedImage == null) {
-        showToast("Выберите профиль изображения");
-        return false;
-    }else if(binding.inputName.getText().toString().trim().isEmpty()) {
-        showToast("Введите имя");
-        return false;
-    }else if(binding.inputEmail.getText().toString().trim().isEmpty()){
-        showToast("Введите адрес электронной почты");
-        return false;
-    }else if(!Patterns.EMAIL_ADDRESS.matcher(binding.inputEmail.getText().toString()).matches()) {
-        showToast("Введите изображение электронной почты");
-        return false;
-    }else if(binding.inputPassword.getText().toString().trim().isEmpty()){
-        showToast("Введите пароль");
-        return false;
-    }else if(binding.inputConfirmPassword.getText().toString().trim().isEmpty()) {
-        showToast("Введите пароль");
-        return false;
-    }else if(!binding.inputPassword.getText().toString().equals(binding.inputConfirmPassword.getText().toString())) {
-        showToast("Пароль для подтверждения должны совпадать");
-        return false;
-    }else {
-        return true;
-    }
+            });
+
+    private Boolean isValidSignUpDetails() {
+        if (encodedImage == null) {
+            showToast("Выберите профиль изображения");
+            return false;
+        } else if (binding.inputName.getText().toString().trim().isEmpty()) {
+            showToast("Введите имя");
+            return false;
+        } else if (binding.inputEmail.getText().toString().trim().isEmpty()) {
+            showToast("Введите адрес электронной почты");
+            return false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(binding.inputEmail.getText().toString()).matches()) {
+            showToast("Введите изображение электронной почты");
+            return false;
+        } else if (binding.inputPassword.getText().toString().trim().isEmpty()) {
+            showToast("Введите пароль");
+            return false;
+        } else if (binding.inputConfirmPassword.getText().toString().trim().isEmpty()) {
+            showToast("Введите пароль");
+            return false;
+        } else if (!binding.inputPassword.getText().toString().equals(binding.inputConfirmPassword.getText().toString())) {
+            showToast("Пароль для подтверждения должны совпадать");
+            return false;
+        } else {
+            return true;
+        }
     }
 
     private void loading(Boolean isLoading) {
         if (isLoading) {
             binding.buttonSignUp.setVisibility(View.INVISIBLE);
             binding.progressBar.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             binding.progressBar.setVisibility(View.INVISIBLE);
             binding.buttonSignUp.setVisibility(View.VISIBLE);
         }

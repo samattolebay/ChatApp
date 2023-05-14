@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.WriteReviewActivity">
+    tools:context=".ksk.activity.WriteReviewActivity">
 
     <RelativeLayout
         android:id="@+id/RL"

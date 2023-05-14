@@ -57,7 +57,7 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
         String finalPrice = modelCart.getFinalPrice();
         String discountPercent = modelCart.getDiscountPercent();
         final String productId = modelCart.getProductId();
-        final String shopId =  modelCart.getShopId();
+        final String shopId = modelCart.getShopId();
 
         holder.titleTv.setText(title);
         holder.categoryTv.setText(category);
@@ -65,12 +65,11 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
         holder.discountPriceTv.setText(finalPrice);
         holder.quantityTv.setText(quantity);
         holder.discountPercentTv.setText(discountPercent);
-        if (modelCart.getDiscountAvailable().equals("true")){
+        if (modelCart.getDiscountAvailable().equals("true")) {
             holder.discountPercentTv.setVisibility(View.VISIBLE);
             holder.discountPriceTv.setVisibility(View.VISIBLE);
             holder.orignalPriceTv.setPaintFlags(holder.orignalPriceTv.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        }
-        else {
+        } else {
             holder.discountPercentTv.setVisibility(View.GONE);
             holder.discountPriceTv.setVisibility(View.GONE);
             holder.orignalPriceTv.setTextColor(Color.BLACK);
@@ -78,8 +77,7 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
         }
         try {
             Picasso.get().load(itemImage).placeholder(R.drawable.ic_cart_primary).into(holder.productIconIv);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             holder.productIconIv.setImageResource(R.drawable.ic_cart_primary);
         }
 
@@ -92,7 +90,7 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
                         .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                deleteProduct(productId,shopId);
+                                deleteProduct(productId, shopId);
                             }
                         })
                         .setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
@@ -105,7 +103,7 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
         });
     }
 
-    private void deleteProduct(String id, String shopId){
+    private void deleteProduct(String id, String shopId) {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
         ref.child(mAuth.getUid()).child("CartItem").child(shopId).child(id).removeValue()
@@ -118,7 +116,7 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -129,7 +127,7 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.HolderCart> {
         return cartList.size();
     }
 
-    class HolderCart extends RecyclerView.ViewHolder{
+    class HolderCart extends RecyclerView.ViewHolder {
 
         private ImageView productIconIv;
         private TextView titleTv, categoryTv, discountPriceTv, orignalPriceTv, discountPercentTv, quantityTv;

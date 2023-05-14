@@ -55,14 +55,12 @@ public class AdapterOrderUser extends RecyclerView.Adapter<AdapterOrderUser.Hold
 
         holder.amountTv.setText("Amount: $" + orderCost);
         holder.orderStatusTv.setText(orderStatus);
-        holder.orderIdTv.setText("OrderID: "+orderId);
-        if (orderStatus.equals("In Progress")){
+        holder.orderIdTv.setText("OrderID: " + orderId);
+        if (orderStatus.equals("In Progress")) {
             holder.orderStatusTv.setTextColor(context.getResources().getColor(R.color.colorPrimary));
-        }
-        else if (orderStatus.equals("Completed")){
+        } else if (orderStatus.equals("Completed")) {
             holder.orderStatusTv.setTextColor(context.getResources().getColor(R.color.colorGreen));
-        }
-        else {
+        } else {
             holder.orderStatusTv.setTextColor(context.getResources().getColor(R.color.colorRed01));
         }
 
@@ -87,7 +85,7 @@ public class AdapterOrderUser extends RecyclerView.Adapter<AdapterOrderUser.Hold
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String shopName = ""+dataSnapshot.child("shopName").getValue();
+                        String shopName = "" + dataSnapshot.child("shopName").getValue();
                         holder.shopNameTv.setText(shopName);
                     }
 

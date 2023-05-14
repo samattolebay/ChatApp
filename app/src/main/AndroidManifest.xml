@@ -17,8 +17,7 @@
         android:theme="@style/Theme.ChatApp">
         <activity
             android:name=".activities.Glavny"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".activities.SignUpUserActivity"
             android:exported="false" />
@@ -46,7 +45,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <activity android:name="com.example.chatapp.ksk.activity.PaymentActivity"></activity>
+
         <activity android:name="com.example.chatapp.ksk.activity.WriteReviewActivity" />
         <activity android:name="com.example.chatapp.ksk.activity.ShopReviewActivity" />
         <activity android:name="com.example.chatapp.ksk.activity.OrderDetailsShopActivity" />

@@ -71,22 +71,20 @@ public class AdapterProductSeller extends RecyclerView.Adapter<AdapterProductSel
         holder.titleTv.setText(productTitle);
         holder.quantityTv.setText(productQuantity);
         holder.discountPercentTv.setText(discountPer);
-        holder.discountedPriceTv.setText("$ "+discountPrice);
-        holder.orignalPriceTv.setText("$ "+orignalPrice);
-        if (discountAvailable.equals("true")){
+        holder.discountedPriceTv.setText("$ " + discountPrice);
+        holder.orignalPriceTv.setText("$ " + orignalPrice);
+        if (discountAvailable.equals("true")) {
             holder.discountedPriceTv.setVisibility(View.VISIBLE);
             holder.discountPercentTv.setVisibility(View.VISIBLE);
             holder.orignalPriceTv.setPaintFlags(holder.orignalPriceTv.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        }
-        else {
+        } else {
             holder.discountedPriceTv.setVisibility(View.GONE);
             holder.discountPercentTv.setVisibility(View.GONE);
             holder.orignalPriceTv.setPaintFlags(0);
         }
         try {
             Picasso.get().load(productIcon).placeholder(R.drawable.ic_cart_primary).into(holder.productIv);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             holder.productIv.setImageResource(R.drawable.ic_cart_primary);
         }
 
@@ -107,7 +105,7 @@ public class AdapterProductSeller extends RecyclerView.Adapter<AdapterProductSel
         ImageButton backBtn = view.findViewById(R.id.backBtn),
                 editBtn = view.findViewById(R.id.editBtn),
                 deleteBtn = view.findViewById(R.id.deleteBtn);
-        ImageView productIconIv= view.findViewById(R.id.productIV);
+        ImageView productIconIv = view.findViewById(R.id.productIV);
         TextView discountPerTv = view.findViewById(R.id.discountPercTV),
                 titleTV = view.findViewById(R.id.titleTV),
                 descriptionTv = view.findViewById(R.id.descriptionTV),
@@ -134,23 +132,21 @@ public class AdapterProductSeller extends RecyclerView.Adapter<AdapterProductSel
         quantityTv.setText(productQuantity);
         categoryTv.setText(productCategory);
         discountPerTv.setText(discountPer);
-        discountPriceTv.setText("$"+discountPrice);
-        orignalPriceTv.setText("$"+orignalPrice);
+        discountPriceTv.setText("$" + discountPrice);
+        orignalPriceTv.setText("$" + orignalPrice);
 
-        if (discountAvailable.equals("true")){
+        if (discountAvailable.equals("true")) {
             discountPriceTv.setVisibility(View.VISIBLE);
             discountPerTv.setVisibility(View.VISIBLE);
             orignalPriceTv.setPaintFlags(orignalPriceTv.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        }
-        else {
+        } else {
             discountPriceTv.setVisibility(View.GONE);
             discountPerTv.setVisibility(View.GONE);
-            
+
         }
         try {
             Picasso.get().load(productIcon).placeholder(R.drawable.ic_cart_white).into(productIconIv);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             productIconIv.setImageResource(R.drawable.ic_cart_white);
         }
 
@@ -196,7 +192,7 @@ public class AdapterProductSeller extends RecyclerView.Adapter<AdapterProductSel
         });
     }
 
-    private void deleteProduct(String id){
+    private void deleteProduct(String id) {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
         ref.child(mAuth.getUid()).child("Products").child(id).removeValue()
@@ -206,12 +202,12 @@ public class AdapterProductSeller extends RecyclerView.Adapter<AdapterProductSel
                         Toast.makeText(context, "Product Deleted...", Toast.LENGTH_SHORT).show();
                     }
                 })
-        .addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
 
     }
 
@@ -222,13 +218,13 @@ public class AdapterProductSeller extends RecyclerView.Adapter<AdapterProductSel
 
     @Override
     public Filter getFilter() {
-        if (filter==null){
+        if (filter == null) {
             filter = new FilterProduct(this, filterList);
         }
         return filter;
     }
 
-    class HolderProductSeller extends RecyclerView.ViewHolder{
+    class HolderProductSeller extends RecyclerView.ViewHolder {
 
         private ImageView productIv;
         private TextView discountPercentTv, titleTv, quantityTv, discountedPriceTv, orignalPriceTv;

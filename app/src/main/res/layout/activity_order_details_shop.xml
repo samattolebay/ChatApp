@@ -10,16 +10,16 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:padding="10dp"
-        android:background="@drawable/shape_rect01">
+        android:background="@drawable/shape_rect01"
+        android:padding="10dp">
 
         <ImageButton
             android:id="@+id/backBtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_back_white"
-            android:background="@null" />
+            android:background="@null"
+            android:src="@drawable/ic_back_white" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -27,28 +27,28 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="Тапсырыс туралы мәліметтер"
-            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
             android:textSize="24dp"
-            android:textColor="@color/colorWhite" />
+            android:textStyle="bold" />
 
         <ImageButton
             android:id="@+id/editStatusBtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:src="@drawable/ic_edit_white"
-            android:background="@null" />
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:src="@drawable/ic_edit_white" />
 
         <ImageButton
             android:id="@+id/mapBtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@id/editStatusBtn"
             android:layout_marginRight="5dp"
-            android:src="@drawable/ic_map_white"
-            android:background="@null" />
+            android:layout_toLeftOf="@id/editStatusBtn"
+            android:background="@null"
+            android:src="@drawable/ic_map_white" />
 
     </RelativeLayout>
 
@@ -63,14 +63,15 @@
             android:layout_height="wrap_content">
 
             <TableRow>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:text="Заказ ID :"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorBlack" />
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/orderIdTV"
@@ -82,14 +83,15 @@
             </TableRow>
 
             <TableRow>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:text="Тапсырыс күні :"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorBlack" />
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/dateTV"
@@ -101,14 +103,15 @@
             </TableRow>
 
             <TableRow>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:text="Тапсырыс статусы :"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorBlack" />
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/orderStatusTV"
@@ -120,14 +123,15 @@
             </TableRow>
 
             <TableRow>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:text="Алушының электрондық поштасы :"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorBlack" />
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/buyerEmailTV"
@@ -139,14 +143,15 @@
             </TableRow>
 
             <TableRow>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:text="Заказ алушының телефоны :"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorBlack" />
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/buyerPhoneTV"
@@ -158,14 +163,15 @@
             </TableRow>
 
             <TableRow>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:text="Тауарлар :"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorBlack" />
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/totalItemTV"
@@ -177,14 +183,15 @@
             </TableRow>
 
             <TableRow>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:text="Соммасы :"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorBlack" />
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/amountTV"
@@ -196,14 +203,15 @@
             </TableRow>
 
             <TableRow>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:text="Жеткізу мекенжайы :"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorBlack" />
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/deliveryAddressTV"
@@ -223,11 +231,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
+        android:padding="5dp"
         android:text="Тапсырыс берілген тауарлар"
         android:textAlignment="center"
         android:textColor="@color/colorWhite"
-        android:textStyle="bold"
-        android:padding="5dp"/>
+        android:textStyle="bold" />
 
     <FrameLayout
         android:layout_width="match_parent"

@@ -23,7 +23,7 @@
         android:layout_height="0dp"
         android:background="@color/aqua2"
         app:layout_constraintBottom_toTopOf="@+id/viewSupporter"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageInfo"
@@ -34,9 +34,9 @@
         android:layout_marginRight="@dimen/_16sdp"
         android:padding="@dimen/_4sdp"
         android:src="@drawable/ic_info"
+        android:tint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:tint="@color/white"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textName"
@@ -53,16 +53,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageBack"
         app:layout_constraintEnd_toStartOf="@+id/imageInfo"
         app:layout_constraintStart_toEndOf="@+id/imageBack"
-        app:layout_constraintTop_toTopOf="@+id/imageBack"/>
+        app:layout_constraintTop_toTopOf="@+id/imageBack" />
 
     <View
         android:id="@+id/viewSupporter"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/primary"
         android:layout_marginTop="@dimen/_12sdp"
+        android:background="@color/primary"
         app:layout_constraintTop_toBottomOf="@+id/imageBack" />
-
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -73,20 +72,20 @@
         android:orientation="vertical"
         android:overScrollMode="never"
         android:padding="@dimen/_20sdp"
-        app:stackFromEnd="true"
         android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@+id/viewBackground"
-        app:layout_constraintTop_toBottomOf="@+id/textAvailability" />
+        app:layout_constraintTop_toBottomOf="@+id/textAvailability"
+        app:stackFromEnd="true" />
 
-<ProgressBar
-    android:id="@+id/progressBar"
-    android:layout_width="@dimen/_25sdp"
-    android:layout_height="@dimen/_25sdp"
-    app:layout_constraintBottom_toBottomOf="@+id/viewBackground"
-    app:layout_constraintEnd_toEndOf="@+id/viewBackground"
-    app:layout_constraintStart_toStartOf="@+id/viewBackground"
-    app:layout_constraintTop_toTopOf="@+id/viewBackground" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewBackground"
+        app:layout_constraintEnd_toEndOf="@+id/viewBackground"
+        app:layout_constraintStart_toStartOf="@+id/viewBackground"
+        app:layout_constraintTop_toTopOf="@+id/viewBackground" />
 
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -97,9 +96,9 @@
         android:layout_marginTop="@dimen/_12sdp"
         android:padding="@dimen/_5sdp"
         android:src="@drawable/ic_back"
+        android:tint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:tint="@color/white"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/layoutSend"
@@ -111,7 +110,7 @@
         android:background="@drawable/background_chat_input"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-        
+
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -149,11 +148,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/green"
-        android:textSize="@dimen/_10ssp"
-        android:text="@string/online"
         android:gravity="center"
-        android:textColor="@color/white"
         android:padding="@dimen/_10ssp"
+        android:text="@string/online"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_10ssp"
         android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@+id/viewSupporter" />
 </androidx.constraintlayout.widget.ConstraintLayout>

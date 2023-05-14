@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.chatapp.R;
 
 public class Glavny extends AppCompatActivity {
-    private Button btn1,btn2,btn3,btn4;
+    private Button btn1, btn2, btn3, btn4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,27 +28,27 @@ public class Glavny extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Glavny.this,SignUpActivity.class));
+                startActivity(new Intent(Glavny.this, SignUpActivity.class));
             }
         });
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Glavny.this,SignUpUserActivity.class));
+                startActivity(new Intent(Glavny.this, SignUpUserActivity.class));
             }
         });
 
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Glavny.this,SignInActivity.class));
+                startActivity(new Intent(Glavny.this, SignInActivity.class));
             }
         });
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Glavny.this,SignInActivityAdmin.class));
+                startActivity(new Intent(Glavny.this, SignInActivityAdmin.class));
             }
         });
 

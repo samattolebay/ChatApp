@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="1dp"
     android:elevation="3dp"
     app:contentPadding="5dp">
@@ -26,11 +26,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:orientation="vertical"
             android:layout_toStartOf="@id/nextIV"
             android:layout_toLeftOf="@id/nextIV"
             android:layout_toEndOf="@id/productIconIV"
-            android:layout_toRightOf="@id/productIconIV">
+            android:layout_toRightOf="@id/productIconIV"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/discountPercentTV"
@@ -40,8 +40,8 @@
                 android:background="@drawable/shap_rect05"
                 android:padding="5dp"
                 android:text="10% Off"
-                android:textSize="12dp"
-                android:textColor="@color/colorGreen" />
+                android:textColor="@color/colorGreen"
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/titleTV"
@@ -49,18 +49,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="Title"
+                android:textColor="@color/colorBlack"
                 android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="@color/colorBlack" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/descriptionTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/titleTV"
-                android:text="Product Description"
                 android:maxLines="2"
                 android:minLines="2"
+                android:text="Product Description"
                 android:textColor="@color/colorBlack" />
 
             <TextView
@@ -77,8 +77,8 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
                 android:layout_below="@id/addToCartTV"
+                android:layout_alignParentRight="true"
                 android:layout_marginTop="5dp">
 
                 <TextView
@@ -92,9 +92,9 @@
                 <TextView
                     android:id="@+id/orignalPriceTV"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/discountPriceTV"
                     android:layout_toRightOf="@id/discountPriceTV"
-                    android:layout_height="wrap_content"
                     android:text="$ 20"
                     android:textColor="@color/colorGray02" />
 
@@ -108,11 +108,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/ic_next_gray"/>
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_next_gray" />
 
     </RelativeLayout>
 

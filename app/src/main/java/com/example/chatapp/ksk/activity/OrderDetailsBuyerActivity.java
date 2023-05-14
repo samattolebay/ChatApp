@@ -85,6 +85,7 @@ public class OrderDetailsBuyerActivity extends AppCompatActivity {
     }
 
     String totalItems;
+
     private void loadOrderItems() {
         orderedItemsArrayList = new ArrayList<>();
 
@@ -100,7 +101,7 @@ public class OrderDetailsBuyerActivity extends AppCompatActivity {
                         }
                         adapterOrderedItem = new AdapterOrderedItem(OrderDetailsBuyerActivity.this, orderedItemsArrayList);
                         itemsRv.setAdapter(adapterOrderedItem);
-                        totalItems = ""+dataSnapshot.getChildrenCount();
+                        totalItems = "" + dataSnapshot.getChildrenCount();
                         totalIemTv.setText(totalItems);
                     }
 
@@ -117,14 +118,14 @@ public class OrderDetailsBuyerActivity extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String orderBy = ""+dataSnapshot.child("orderBy").getValue();
-                        String orderCost = ""+dataSnapshot.child("orderCost").getValue();
-                        String orderId = ""+dataSnapshot.child("orderId").getValue();
-                        String orderStatus = ""+dataSnapshot.child("orderStatus").getValue();
-                        String orderTime = ""+dataSnapshot.child("orderTime").getValue();
-                        String orderFrom = ""+dataSnapshot.child("orderFrom").getValue();
-                        String latitude = ""+dataSnapshot.child("latitude").getValue();
-                        String longitude = ""+dataSnapshot.child("longitude").getValue();
+                        String orderBy = "" + dataSnapshot.child("orderBy").getValue();
+                        String orderCost = "" + dataSnapshot.child("orderCost").getValue();
+                        String orderId = "" + dataSnapshot.child("orderId").getValue();
+                        String orderStatus = "" + dataSnapshot.child("orderStatus").getValue();
+                        String orderTime = "" + dataSnapshot.child("orderTime").getValue();
+                        String orderFrom = "" + dataSnapshot.child("orderFrom").getValue();
+                        String latitude = "" + dataSnapshot.child("latitude").getValue();
+                        String longitude = "" + dataSnapshot.child("longitude").getValue();
 
                         orderCost = orderCost.replaceAll("\\(.*[\\)]", "").replaceAll(" \\(", "").replaceAll("\\)", "");
 
@@ -132,20 +133,18 @@ public class OrderDetailsBuyerActivity extends AppCompatActivity {
                         calendar.setTimeInMillis(Long.parseLong(orderTime));
                         String formateDate = DateFormat.format("dd/MM/yyyy hh:mm a", calendar).toString();
 
-                        if (orderStatus.equals("In Progress")){
+                        if (orderStatus.equals("In Progress")) {
                             orderStatusTv.setTextColor(getResources().getColor(R.color.colorPrimary));
-                        }
-                        else if (orderStatus.equals("Completed")){
+                        } else if (orderStatus.equals("Completed")) {
                             orderStatusTv.setTextColor(getResources().getColor(R.color.colorGreen));
-                        }
-                        else {
+                        } else {
                             orderStatusTv.setTextColor(getResources().getColor(R.color.colorRed01));
                         }
 
                         orderIdTv.setText(orderId);
                         orderStatusTv.setText(orderStatus);
-                        double total = Double.parseDouble(orderCost)+Double.parseDouble(deliveryFee);
-                        amountTv.setText("$"+ total +" [including $"+ deliveryFee +" Delivery Fee]");
+                        double total = Double.parseDouble(orderCost) + Double.parseDouble(deliveryFee);
+                        amountTv.setText("$" + total + " [including $" + deliveryFee + " Delivery Fee]");
                         dateTv.setText(formateDate);
 
                         findAddress(latitude, longitude);
@@ -173,8 +172,7 @@ public class OrderDetailsBuyerActivity extends AppCompatActivity {
             String state = addresses.get(0).getAdminArea();
             String country = addresses.get(0).getCountryName();
             addressTv.setText(address + ", " + city + ", " + state + ", " + country);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
 
         }
     }
@@ -185,8 +183,8 @@ public class OrderDetailsBuyerActivity extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String shopName = ""+dataSnapshot.child("shopName").getValue();
-                        deliveryFee = ""+dataSnapshot.child("deliveryFee").getValue();
+                        String shopName = "" + dataSnapshot.child("shopName").getValue();
+                        deliveryFee = "" + dataSnapshot.child("deliveryFee").getValue();
                         shopNameTv.setText(shopName);
                     }
 

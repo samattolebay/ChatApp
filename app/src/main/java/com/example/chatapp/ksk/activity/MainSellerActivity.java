@@ -42,7 +42,7 @@ import java.util.HashMap;
 public class MainSellerActivity extends AppCompatActivity {
 
     private ImageView profileIv;
-    private TextView nameTv, shopNameTv, emailTv, tabProductTv,  tabOrdersTv, filterProductTv, filterOrderTv;
+    private TextView nameTv, shopNameTv, emailTv, tabProductTv, tabOrdersTv, filterProductTv, filterOrderTv;
     private EditText searchProductEt;
     private ImageButton logoutBtn, editProfileBtn, addProductBtn, filterProductBtn, filterOrderBtn, reviewsBtn;
     private RelativeLayout productRl, ordersRl;
@@ -140,8 +140,7 @@ public class MainSellerActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
                     adapterProductSeller.getFilter().filter(s);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -162,10 +161,9 @@ public class MainSellerActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 String selected = Constants.productCategories1[which];
                                 filterProductTv.setText(selected);
-                                if (selected.equals("All")){
+                                if (selected.equals("All")) {
                                     loadAllProduct();
-                                }
-                                else {
+                                } else {
                                     loadFilteredProducts(selected);
                                 }
                             }
@@ -176,19 +174,18 @@ public class MainSellerActivity extends AppCompatActivity {
         filterOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String[] options = {"All", "In Progress","Completrd", "Cancelled"};
+                final String[] options = {"All", "In Progress", "Completrd", "Cancelled"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainSellerActivity.this);
                 builder.setTitle("Filter Orders:")
                         .setItems(options, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                if (which == 0){
+                                if (which == 0) {
                                     filterOrderTv.setText("Showing All Product");
                                     adapterOrderShop.getFilter().filter("");
-                                }
-                                else {
+                                } else {
                                     String optionClicked = options[which];
-                                    filterOrderTv.setText("Showing "+optionClicked+" Orders");
+                                    filterOrderTv.setText("Showing " + optionClicked + " Orders");
                                     adapterOrderShop.getFilter().filter(optionClicked);
                                 }
                             }
@@ -240,10 +237,10 @@ public class MainSellerActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         productList.clear();
-                        for (DataSnapshot ds : dataSnapshot.getChildren()){
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
-                            String productCategory = ""+ds.child("prductCategory").getValue();
-                            if (selected.equals(productCategory)){
+                            String productCategory = "" + ds.child("prductCategory").getValue();
+                            if (selected.equals(productCategory)) {
                                 ModelProduct modelProduct = ds.getValue(ModelProduct.class);
                                 productList.add(modelProduct);
                             }
@@ -269,7 +266,7 @@ public class MainSellerActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         productList.clear();
-                        for (DataSnapshot ds : dataSnapshot.getChildren()){
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
                             ModelProduct modelProduct = ds.getValue(ModelProduct.class);
                             productList.add(modelProduct);
                         }
@@ -307,7 +304,7 @@ public class MainSellerActivity extends AppCompatActivity {
         tabOrdersTv.setBackgroundColor(getResources().getColor(android.R.color.transparent));
     }
 
-    private void makeMeOffline(){
+    private void makeMeOffline() {
         mProgressDialog.setMessage("Logging Out...");
 
         HashMap<String, Object> hashMap = new HashMap<>();
@@ -326,18 +323,18 @@ public class MainSellerActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         mProgressDialog.dismiss();
-                        Toast.makeText(MainSellerActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainSellerActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
     private void checkUser() {
         FirebaseUser user = mAuth.getCurrentUser();
-        if (user == null){
+        if (user == null) {
             startActivity(new Intent(MainSellerActivity.this, LoginActivity.class));
-            finish();;
-        }
-        else {
+            finish();
+            ;
+        } else {
             loadMyInfo();
         }
     }
@@ -348,20 +345,19 @@ public class MainSellerActivity extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot ds : dataSnapshot.getChildren()){
-                            String name = ""+ds.child("name").getValue();
-                            String accountType = ""+ds.child("accountType").getValue();
-                            String shopName = ""+ds.child("shopName").getValue();
-                            String email = ""+ds.child("email").getValue();
-                            String profileImage = ""+ds.child("profileImage").getValue();
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            String name = "" + ds.child("name").getValue();
+                            String accountType = "" + ds.child("accountType").getValue();
+                            String shopName = "" + ds.child("shopName").getValue();
+                            String email = "" + ds.child("email").getValue();
+                            String profileImage = "" + ds.child("profileImage").getValue();
 
                             nameTv.setText(name);
                             shopNameTv.setText(shopName);
                             emailTv.setText(email);
                             try {
                                 Picasso.get().load(profileImage).placeholder(R.drawable.ic_store_gray).into(profileIv);
-                            }
-                            catch (Exception e){
+                            } catch (Exception e) {
                                 profileIv.setImageResource(R.drawable.ic_store_gray);
                             }
                         }

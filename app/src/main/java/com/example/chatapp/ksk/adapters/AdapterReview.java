@@ -24,7 +24,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class AdapterReview extends RecyclerView.Adapter<AdapterReview.HolderReview>{
+public class AdapterReview extends RecyclerView.Adapter<AdapterReview.HolderReview> {
 
     private Context context;
     private ArrayList<ModelReview> reviewArrayList;
@@ -69,14 +69,13 @@ public class AdapterReview extends RecyclerView.Adapter<AdapterReview.HolderRevi
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String name = ""+dataSnapshot.child("name").getValue();
-                        String profileImage = ""+dataSnapshot.child("profileImage").getValue();
+                        String name = "" + dataSnapshot.child("name").getValue();
+                        String profileImage = "" + dataSnapshot.child("profileImage").getValue();
 
                         holder.nameTv.setText(name);
                         try {
                             Picasso.get().load(profileImage).placeholder(R.drawable.ic_store_gray).into(holder.profileIv);
-                        }
-                        catch (Exception e) {
+                        } catch (Exception e) {
                             holder.profileIv.setImageResource(R.drawable.ic_store_gray);
                         }
                     }
@@ -93,7 +92,7 @@ public class AdapterReview extends RecyclerView.Adapter<AdapterReview.HolderRevi
         return reviewArrayList.size();
     }
 
-    class HolderReview extends RecyclerView.ViewHolder{
+    class HolderReview extends RecyclerView.ViewHolder {
 
         private ImageView profileIv;
         private TextView nameTv, dateTv, reviewTv;

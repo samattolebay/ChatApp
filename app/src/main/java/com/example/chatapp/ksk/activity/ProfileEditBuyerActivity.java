@@ -360,8 +360,8 @@ public class ProfileEditBuyerActivity extends AppCompatActivity implements Locat
             stateEt.setText(state);
             cityEt.setText(city);
             streetEt.setText(address);
-        }catch (Exception e){
-            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -382,21 +382,21 @@ public class ProfileEditBuyerActivity extends AppCompatActivity implements Locat
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
-            case  LOCATION_REQUEST_CODE:{
-                if (grantResults.length>0){
+        switch (requestCode) {
+            case LOCATION_REQUEST_CODE: {
+                if (grantResults.length > 0) {
                     boolean locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                    if (locationAccepted){
+                    if (locationAccepted) {
                         //permission allowed
                         detectLocation();
-                    }else {
+                    } else {
                         //permission denied
                         Toast.makeText(this, "Location Permission is required...", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
             break;
-            case CAMERA_REQUEST_CODE:{
+            case CAMERA_REQUEST_CODE: {
                 if (grantResults.length > 0) {
                     boolean cameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     boolean storageAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
@@ -409,7 +409,7 @@ public class ProfileEditBuyerActivity extends AppCompatActivity implements Locat
             }
             break;
 
-            case STORAGE_REQUEST_CODE:{
+            case STORAGE_REQUEST_CODE: {
                 if (grantResults.length > 0) {
                     boolean storageAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     if (storageAccepted) {
@@ -426,12 +426,11 @@ public class ProfileEditBuyerActivity extends AppCompatActivity implements Locat
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (resultCode == RESULT_OK){
-            if (requestCode == IMAGE_PICK_GALLERY_CODE){
+        if (resultCode == RESULT_OK) {
+            if (requestCode == IMAGE_PICK_GALLERY_CODE) {
                 image_uri = data.getData();
                 profileIv.setImageURI(image_uri);
-            }
-            else if(requestCode == IMAGE_PICK_CAMERA_CODE){
+            } else if (requestCode == IMAGE_PICK_CAMERA_CODE) {
                 profileIv.setImageURI(image_uri);
             }
         }
@@ -446,18 +445,16 @@ public class ProfileEditBuyerActivity extends AppCompatActivity implements Locat
                 .setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (which==0){
-                            if (checkCameraPermission()){
+                        if (which == 0) {
+                            if (checkCameraPermission()) {
                                 pickFromCamera();
-                            }
-                            else {
+                            } else {
                                 requestCameraPermission();
                             }
-                        }else {
-                            if (checkStoragePermission()){
+                        } else {
+                            if (checkStoragePermission()) {
                                 pickFromGalery();
-                            }
-                            else {
+                            } else {
                                 requestStoragePermission();
                             }
                         }
@@ -465,7 +462,7 @@ public class ProfileEditBuyerActivity extends AppCompatActivity implements Locat
                 }).show();
     }
 
-    private boolean checkCameraPermission(){
+    private boolean checkCameraPermission() {
         boolean result = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.CAMERA) ==
                 (PackageManager.PERMISSION_GRANTED);
@@ -475,7 +472,7 @@ public class ProfileEditBuyerActivity extends AppCompatActivity implements Locat
         return result && result1;
     }
 
-    private void pickFromCamera(){
+    private void pickFromCamera() {
         ContentValues contentValues = new ContentValues();
         contentValues.put(MediaStore.Images.Media.TITLE, "Temp_Image_Title");
         contentValues.put(MediaStore.Images.Media.DESCRIPTION, "Temp_Image_Description");
@@ -486,24 +483,24 @@ public class ProfileEditBuyerActivity extends AppCompatActivity implements Locat
         startActivityForResult(intent, IMAGE_PICK_CAMERA_CODE);
     }
 
-    private void requestCameraPermission(){
+    private void requestCameraPermission() {
         ActivityCompat.requestPermissions(this, cameraPermission, CAMERA_REQUEST_CODE);
     }
 
-    private boolean checkStoragePermission(){
+    private boolean checkStoragePermission() {
         boolean result = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
                 (PackageManager.PERMISSION_GRANTED);
         return result;
     }
 
-    private void pickFromGalery(){
+    private void pickFromGalery() {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent, IMAGE_PICK_GALLERY_CODE);
     }
 
-    private void requestStoragePermission(){
+    private void requestStoragePermission() {
         ActivityCompat.requestPermissions(this, storagePermission, STORAGE_REQUEST_CODE);
     }
 }

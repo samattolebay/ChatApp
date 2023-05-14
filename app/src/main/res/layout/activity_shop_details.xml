@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ShopDetailsActivity">
+    tools:context=".ksk.activity.ShopDetailsActivity">
 
     <RelativeLayout
         android:id="@+id/shopRL"
@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@color/colorGray02"/>
+            android:src="@color/colorGray02" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -27,34 +27,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:padding="10dp" >
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/shopNameTV"
+                style="@style/TextAppearance.AppCompat.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_margin="3dp"
                 android:text="Shop Name"
-                android:textColor="@color/colorWhite"
-                android:layout_margin="3dp" />
+                android:textColor="@color/colorWhite" />
 
             <TextView
                 android:id="@+id/phoneTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/shopNameTV"
+                android:layout_margin="3dp"
                 android:text="Phone"
-                android:textColor="@color/colorWhite"
-                android:layout_margin="3dp" />
+                android:textColor="@color/colorWhite" />
 
             <TextView
                 android:id="@+id/emailTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/phoneTV"
+                android:layout_margin="3dp"
                 android:text="Email"
-                android:textColor="@color/colorWhite"
-                android:layout_margin="3dp" />
+                android:textColor="@color/colorWhite" />
 
             <TextView
                 android:id="@+id/openCloseTV"
@@ -62,10 +62,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
+                android:layout_margin="3dp"
                 android:padding="5dp"
                 android:text="Ашық"
-                android:textColor="@color/colorWhite"
-                android:layout_margin="3dp" />
+                android:textColor="@color/colorWhite" />
 
             <TextView
                 android:id="@+id/deliveryFeeTV"
@@ -85,23 +85,23 @@
 
             <RatingBar
                 android:id="@+id/ratingBar"
+                style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/deliveryFeeTV"
                 android:layout_alignParentRight="true"
                 android:numStars="5"
-                style="@style/Widget.AppCompat.RatingBar.Small"
                 android:progressBackgroundTint="@color/colorGray01"
-                android:progressTint="@color/colorWhite"/>
+                android:progressTint="@color/colorWhite" />
 
             <TextView
                 android:id="@+id/addressTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/emailTV"
+                android:layout_margin="3dp"
                 android:text="Address"
-                android:textColor="@color/colorWhite"
-                android:layout_margin="3dp" />
+                android:textColor="@color/colorWhite" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -117,7 +117,7 @@
                     android:layout_marginEnd="5dp"
                     android:layout_marginRight="5dp"
                     android:background="@null"
-                    android:src="@drawable/ic_call_white"/>
+                    android:src="@drawable/ic_call_white" />
 
                 <ImageButton
                     android:id="@+id/mapBtn"
@@ -126,7 +126,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:background="@null"
-                    android:src="@drawable/ic_map_white"/>
+                    android:src="@drawable/ic_map_white" />
 
             </LinearLayout>
 
@@ -137,26 +137,26 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:padding="10dp"
-        android:background="@drawable/shape_rect01">
+        android:background="@drawable/shape_rect01"
+        android:padding="10dp">
 
         <ImageButton
             android:id="@+id/backBtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_back_white"
-            android:background="@null" />
+            android:background="@null"
+            android:src="@drawable/ic_back_white" />
 
         <ImageButton
             android:id="@+id/cartBtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginTop="8dp"
-            android:src="@drawable/ic_cart_white"
-            android:layout_alignParentRight="true"
-            android:background="@null" />
+            android:background="@null"
+            android:src="@drawable/ic_cart_white" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -171,21 +171,21 @@
             android:id="@+id/cartCounterTV"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:textColor="@color/colorWhite"
-            android:text="10"
-            android:textSize="8sp"
-            android:gravity="center"
+            android:layout_alignParentRight="true"
             android:background="@drawable/shape_circle02"
-            android:layout_alignParentRight="true"/>
+            android:gravity="center"
+            android:text="10"
+            android:textColor="@color/colorWhite"
+            android:textSize="8sp" />
 
         <ImageButton
             android:id="@+id/reviewsBtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_toLeftOf="@id/cartBtn"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_star_white"
-            android:background="@android:color/transparent"/>
+            android:layout_toLeftOf="@id/cartBtn"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_star_white" />
 
     </RelativeLayout>
 
@@ -231,11 +231,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/searchProductET"
-            android:textColor="@color/colorBlack"
-            android:text="Барлығын көрсету"
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginBottom="5dp" />
+            android:layout_marginBottom="5dp"
+            android:text="Барлығын көрсету"
+            android:textColor="@color/colorBlack" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/productRV"

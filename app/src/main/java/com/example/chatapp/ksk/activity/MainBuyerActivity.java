@@ -135,11 +135,11 @@ public class MainBuyerActivity extends AppCompatActivity {
 
     private void checkUser() {
         FirebaseUser user = mAuth.getCurrentUser();
-        if (user == null){
+        if (user == null) {
             startActivity(new Intent(MainBuyerActivity.this, LoginActivity.class));
-            finish();;
-        }
-        else {
+            finish();
+            ;
+        } else {
             loadMyInfo();
         }
     }
@@ -150,21 +150,20 @@ public class MainBuyerActivity extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot ds : dataSnapshot.getChildren()){
-                            String name = ""+ds.child("name").getValue();
-                            String email = ""+ds.child("email").getValue();
-                            String phone = ""+ds.child("phone").getValue();
-                            String profileImage = ""+ds.child("profileImage").getValue();
-                            String accountType = ""+ds.child("accountType").getValue();
-                            String city = ""+ds.child("city").getValue();
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            String name = "" + ds.child("name").getValue();
+                            String email = "" + ds.child("email").getValue();
+                            String phone = "" + ds.child("phone").getValue();
+                            String profileImage = "" + ds.child("profileImage").getValue();
+                            String accountType = "" + ds.child("accountType").getValue();
+                            String city = "" + ds.child("city").getValue();
 
                             nameTv.setText(name);
                             emailTv.setText(email);
                             phoneTv.setText(phone);
                             try {
                                 Picasso.get().load(profileImage).placeholder(R.drawable.ic_person_gray).into(profileIv);
-                            }
-                            catch (Exception e) {
+                            } catch (Exception e) {
                                 profileIv.setImageResource(R.drawable.ic_person_gray);
                             }
                             loadShop(city);
@@ -186,16 +185,16 @@ public class MainBuyerActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 orderList.clear();
-                for (DataSnapshot ds : dataSnapshot.getChildren()){
-                    String uid = ""+ds.getRef().getKey();
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String uid = "" + ds.getRef().getKey();
 
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("Orders");
                     ref.orderByChild("orderBy").equalTo(mAuth.getUid())
                             .addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    if (dataSnapshot.exists()){
-                                        for (DataSnapshot ds : dataSnapshot.getChildren()){
+                                    if (dataSnapshot.exists()) {
+                                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
                                             ModelOrderUser modelOrderUser = ds.getValue(ModelOrderUser.class);
 
                                             orderList.add(modelOrderUser);
@@ -229,13 +228,13 @@ public class MainBuyerActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         shopList.clear();
-                        for (DataSnapshot ds: dataSnapshot.getChildren()){
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
                             ModelShop modelShop = ds.getValue(ModelShop.class);
 
 //                            String shopCity = ""+ds.child("city").getValue();
 
 //                            if (shopCity.equals(myCity)){
-                                shopList.add(modelShop);
+                            shopList.add(modelShop);
 //                            }
                         }
 

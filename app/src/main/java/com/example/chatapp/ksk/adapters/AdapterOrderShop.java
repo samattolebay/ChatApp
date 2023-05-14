@@ -60,16 +60,14 @@ public class AdapterOrderShop extends RecyclerView.Adapter<AdapterOrderShop.Hold
 
         loadUserInfo(modelOrderShop, holder);
 
-        holder.amountTv.setText("Amount: $"+orderCost);
+        holder.amountTv.setText("Amount: $" + orderCost);
         holder.orderStatusTv.setText(orderStatus);
-        holder.orderIdTv.setText("Order ID: "+orderId);
-        if (orderStatus.equals("In Progress")){
+        holder.orderIdTv.setText("Order ID: " + orderId);
+        if (orderStatus.equals("In Progress")) {
             holder.orderStatusTv.setTextColor(context.getResources().getColor(R.color.colorPrimary));
-        }
-        else if (orderStatus.equals("Completed")){
+        } else if (orderStatus.equals("Completed")) {
             holder.orderStatusTv.setTextColor(context.getResources().getColor(R.color.colorGreen));
-        }
-        else {
+        } else {
             holder.orderStatusTv.setTextColor(context.getResources().getColor(R.color.colorRed01));
         }
 
@@ -96,7 +94,7 @@ public class AdapterOrderShop extends RecyclerView.Adapter<AdapterOrderShop.Hold
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String email = ""+dataSnapshot.child("email").getValue();
+                        String email = "" + dataSnapshot.child("email").getValue();
                         holder.emailTv.setText(email);
                     }
 
@@ -120,7 +118,7 @@ public class AdapterOrderShop extends RecyclerView.Adapter<AdapterOrderShop.Hold
         return filter;
     }
 
-    class HolderOrderShop extends RecyclerView.ViewHolder{
+    class HolderOrderShop extends RecyclerView.ViewHolder {
 
         private TextView orderIdTv, orderDateTv, emailTv, amountTv, orderStatusTv;
         private ImageView nextIv;

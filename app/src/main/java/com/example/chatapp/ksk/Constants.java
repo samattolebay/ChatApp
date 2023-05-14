@@ -4,11 +4,11 @@ public class Constants {
 
     public static final String[] productCategories = {
             "Санузел", "Подьезд",
-            "Кухня","Басқалар"
+            "Кухня", "Басқалар"
     };
 
     public static final String[] productCategories1 = {
-            "Барлығы",  "Санузел", "Подьезд",
-            "Кухня","Басқалар"
+            "Барлығы", "Санузел", "Подьезд",
+            "Кухня", "Басқалар"
     };
 }

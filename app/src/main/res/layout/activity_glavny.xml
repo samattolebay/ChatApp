@@ -7,39 +7,35 @@
     android:background="@drawable/bast"
     tools:context=".activities.Glavny">
 
-
-
-
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="464dp"
         android:text="Button"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="visible"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_35sdp"
         android:layout_marginEnd="@dimen/_16sdp"
+        android:background="@drawable/oval"
         android:orientation="horizontal"
+        android:text="@string/zareg"
+        android:textSize="@dimen/_10ssp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button4"
         app:layout_constraintHorizontal_bias="0.205"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.955"
-        tools:ignore="MissingConstraints"
-        android:text="@string/zareg"
-        android:textSize="@dimen/_10ssp"
-        android:textStyle="bold"
-        android:background="@drawable/oval"
-        />
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button4"
@@ -90,11 +86,11 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1sp"
+        android:layout_marginLeft="@dimen/_10ssp"
+        android:layout_marginRight="@dimen/_10ssp"
         android:background="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        android:layout_marginRight="@dimen/_10ssp"
-        android:layout_marginLeft="@dimen/_10ssp"
         tools:layout_editor_absoluteX="0dp" />
 
     <TextView

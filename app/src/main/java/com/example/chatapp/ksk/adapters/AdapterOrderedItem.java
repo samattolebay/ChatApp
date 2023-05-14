@@ -44,7 +44,7 @@ public class AdapterOrderedItem extends RecyclerView.Adapter<AdapterOrderedItem.
         holder.itemTitleTv.setText(title);
         holder.itemCategoryTv.setText(category);
         holder.priceEachTv.setText(cost);
-        holder.itemQuantityTv.setText("["+quantity+"]");
+        holder.itemQuantityTv.setText("[" + quantity + "]");
     }
 
     @Override
@@ -52,7 +52,7 @@ public class AdapterOrderedItem extends RecyclerView.Adapter<AdapterOrderedItem.
         return orderedItemsArrayList.size();
     }
 
-    class HolderOrderedItem extends RecyclerView.ViewHolder{
+    class HolderOrderedItem extends RecyclerView.ViewHolder {
 
         private TextView itemTitleTv, itemCategoryTv, priceEachTv, itemQuantityTv;
 

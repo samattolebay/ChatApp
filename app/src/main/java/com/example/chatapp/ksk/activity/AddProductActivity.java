@@ -55,10 +55,10 @@ public class AddProductActivity extends AppCompatActivity {
     ProgressDialog mProgressDialog;
 
     //permission request code
-    private static final int CAMERA_REQUEST_CODE =200;
-    private static final int STORAGE_REQUEST_CODE =300;
-    private static final int IMAGE_PICK_GALLERY_CODE =400;
-    private static final int IMAGE_PICK_CAMERA_CODE =500;
+    private static final int CAMERA_REQUEST_CODE = 200;
+    private static final int STORAGE_REQUEST_CODE = 300;
+    private static final int IMAGE_PICK_GALLERY_CODE = 400;
+    private static final int IMAGE_PICK_CAMERA_CODE = 500;
 
     private String[] cameraPermission;
     private String[] storagePermission;
@@ -120,11 +120,10 @@ public class AddProductActivity extends AppCompatActivity {
         discountSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
+                if (isChecked) {
                     discountPriceEt.setVisibility(View.VISIBLE);
                     discountPercentEt.setVisibility(View.VISIBLE);
-                }
-                else {
+                } else {
                     discountPriceEt.setVisibility(View.GONE);
                     discountPercentEt.setVisibility(View.GONE);
                 }
@@ -149,33 +148,32 @@ public class AddProductActivity extends AppCompatActivity {
         discountPercent = discountPercentEt.getText().toString().trim();
         discountAvailable = discountSwitch.isChecked();
 
-        if (TextUtils.isEmpty(productTitle)){
+        if (TextUtils.isEmpty(productTitle)) {
             Toast.makeText(this, "Product Title is required...", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (TextUtils.isEmpty(productCategory)){
+        if (TextUtils.isEmpty(productCategory)) {
             Toast.makeText(this, "Product Category is required...", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (TextUtils.isEmpty(orignalPrice)){
+        if (TextUtils.isEmpty(orignalPrice)) {
             Toast.makeText(this, "Price is required...", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (discountAvailable){
+        if (discountAvailable) {
             discountPrice = discountPriceEt.getText().toString().trim();
             discountPercent = discountPercentEt.getText().toString().trim();
 
-            if (TextUtils.isEmpty(discountPrice)){
+            if (TextUtils.isEmpty(discountPrice)) {
                 Toast.makeText(this, "Discount Price is required...", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (TextUtils.isEmpty(discountPercent)){
+            if (TextUtils.isEmpty(discountPercent)) {
                 Toast.makeText(this, "Discount percent is required...", Toast.LENGTH_SHORT).show();
                 return;
             }
-        }
-        else {
+        } else {
             discountPrice = "0.0";
             discountPercent = "";
         }
@@ -187,22 +185,22 @@ public class AddProductActivity extends AppCompatActivity {
         mProgressDialog.setMessage("Adding Product...");
         mProgressDialog.show();
 
-        final String timestamp = ""+System.currentTimeMillis();
+        final String timestamp = "" + System.currentTimeMillis();
 
-        if (image_uri == null){
+        if (image_uri == null) {
             HashMap<String, Object> hashMap = new HashMap<>();
-            hashMap.put("prductId", ""+timestamp);
-            hashMap.put("prductTitle", ""+productTitle);
-            hashMap.put("prductDescription", ""+productDescription);
-            hashMap.put("prductCategory", ""+productCategory);
-            hashMap.put("prductQuantity", ""+productQuantity);
+            hashMap.put("prductId", "" + timestamp);
+            hashMap.put("prductTitle", "" + productTitle);
+            hashMap.put("prductDescription", "" + productDescription);
+            hashMap.put("prductCategory", "" + productCategory);
+            hashMap.put("prductQuantity", "" + productQuantity);
             hashMap.put("prductIcon", "");
-            hashMap.put("orignalPrice", ""+orignalPrice);
-            hashMap.put("discountPrice", ""+discountPrice);
-            hashMap.put("discountPercent", ""+discountPercent);
-            hashMap.put("discountAvailable", ""+discountAvailable);
-            hashMap.put("timestamp", ""+timestamp);
-            hashMap.put("uid", ""+mAuth.getUid());
+            hashMap.put("orignalPrice", "" + orignalPrice);
+            hashMap.put("discountPrice", "" + discountPrice);
+            hashMap.put("discountPercent", "" + discountPercent);
+            hashMap.put("discountAvailable", "" + discountAvailable);
+            hashMap.put("timestamp", "" + timestamp);
+            hashMap.put("uid", "" + mAuth.getUid());
 
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
             ref.child(mAuth.getUid()).child("Products").child(timestamp).setValue(hashMap)
@@ -218,36 +216,35 @@ public class AddProductActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             mProgressDialog.dismiss();
-                            Toast.makeText(AddProductActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddProductActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
 
-        }
-        else {
-            String fileAndPath ="product_image/"+ ""+ timestamp;
+        } else {
+            String fileAndPath = "product_image/" + "" + timestamp;
             StorageReference storageReference = FirebaseStorage.getInstance().getReference(fileAndPath);
             storageReference.putFile(image_uri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Task<Uri> uriTask =  taskSnapshot.getStorage().getDownloadUrl();
-                            while (!uriTask.isSuccessful());
+                            Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                            while (!uriTask.isSuccessful()) ;
                             Uri downlodeImageUri = uriTask.getResult();
 
-                            if (uriTask.isSuccessful()){
+                            if (uriTask.isSuccessful()) {
                                 HashMap<String, Object> hashMap = new HashMap<>();
-                                hashMap.put("prductId", ""+timestamp);
-                                hashMap.put("prductTitle", ""+productTitle);
-                                hashMap.put("prductDescription", ""+productDescription);
-                                hashMap.put("prductCategory", ""+productCategory);
-                                hashMap.put("prductQuantity", ""+productQuantity);
-                                hashMap.put("prductIcon", ""+downlodeImageUri);
-                                hashMap.put("orignalPrice", ""+orignalPrice);
-                                hashMap.put("discountPrice", ""+discountPrice);
-                                hashMap.put("discountPercent", ""+discountPercent);
-                                hashMap.put("discountAvailable", ""+discountAvailable);
-                                hashMap.put("timestamp", ""+timestamp);
-                                hashMap.put("uid", ""+mAuth.getUid());
+                                hashMap.put("prductId", "" + timestamp);
+                                hashMap.put("prductTitle", "" + productTitle);
+                                hashMap.put("prductDescription", "" + productDescription);
+                                hashMap.put("prductCategory", "" + productCategory);
+                                hashMap.put("prductQuantity", "" + productQuantity);
+                                hashMap.put("prductIcon", "" + downlodeImageUri);
+                                hashMap.put("orignalPrice", "" + orignalPrice);
+                                hashMap.put("discountPrice", "" + discountPrice);
+                                hashMap.put("discountPercent", "" + discountPercent);
+                                hashMap.put("discountAvailable", "" + discountAvailable);
+                                hashMap.put("timestamp", "" + timestamp);
+                                hashMap.put("uid", "" + mAuth.getUid());
 
                                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
                                 ref.child(mAuth.getUid()).child("Products").child(timestamp).setValue(hashMap)
@@ -263,7 +260,7 @@ public class AddProductActivity extends AppCompatActivity {
                                             @Override
                                             public void onFailure(@NonNull Exception e) {
                                                 mProgressDialog.dismiss();
-                                                Toast.makeText(AddProductActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(AddProductActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                             }
                                         });
                             }
@@ -273,7 +270,7 @@ public class AddProductActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             mProgressDialog.dismiss();
-                            Toast.makeText(AddProductActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddProductActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
         }
@@ -312,18 +309,16 @@ public class AddProductActivity extends AppCompatActivity {
                 .setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (which==0){
-                            if (checkCameraPermission()){
+                        if (which == 0) {
+                            if (checkCameraPermission()) {
                                 pickFromCamera();
-                            }
-                            else {
+                            } else {
                                 requestCameraPermission();
                             }
-                        }else {
-                            if (checkStoragePermission()){
+                        } else {
+                            if (checkStoragePermission()) {
                                 pickFromGalery();
-                            }
-                            else {
+                            } else {
                                 requestStoragePermission();
                             }
                         }
@@ -331,7 +326,7 @@ public class AddProductActivity extends AppCompatActivity {
                 }).show();
     }
 
-    private boolean checkCameraPermission(){
+    private boolean checkCameraPermission() {
         boolean result = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.CAMERA) ==
                 (PackageManager.PERMISSION_GRANTED);
@@ -341,20 +336,20 @@ public class AddProductActivity extends AppCompatActivity {
         return result && result1;
     }
 
-    private boolean checkStoragePermission(){
+    private boolean checkStoragePermission() {
         boolean result = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
                 (PackageManager.PERMISSION_GRANTED);
         return result;
     }
 
-    private void pickFromGalery(){
+    private void pickFromGalery() {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent, IMAGE_PICK_GALLERY_CODE);
     }
 
-    private void pickFromCamera(){
+    private void pickFromCamera() {
         ContentValues contentValues = new ContentValues();
         contentValues.put(MediaStore.Images.Media.TITLE, "Temp_Image_Title");
         contentValues.put(MediaStore.Images.Media.DESCRIPTION, "Temp_Image_Description");
@@ -365,19 +360,19 @@ public class AddProductActivity extends AppCompatActivity {
         startActivityForResult(intent, IMAGE_PICK_CAMERA_CODE);
     }
 
-    private void requestStoragePermission(){
+    private void requestStoragePermission() {
         ActivityCompat.requestPermissions(this, storagePermission, STORAGE_REQUEST_CODE);
     }
 
-    private void requestCameraPermission(){
+    private void requestCameraPermission() {
         ActivityCompat.requestPermissions(this, cameraPermission, CAMERA_REQUEST_CODE);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
-        switch (requestCode){
-            case CAMERA_REQUEST_CODE:{
+        switch (requestCode) {
+            case CAMERA_REQUEST_CODE: {
                 if (grantResults.length > 0) {
                     boolean cameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     boolean storageAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
@@ -390,7 +385,7 @@ public class AddProductActivity extends AppCompatActivity {
             }
             break;
 
-            case STORAGE_REQUEST_CODE:{
+            case STORAGE_REQUEST_CODE: {
                 if (grantResults.length > 0) {
                     boolean storageAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     if (storageAccepted) {
@@ -407,12 +402,11 @@ public class AddProductActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (resultCode == RESULT_OK){
-            if (requestCode == IMAGE_PICK_GALLERY_CODE){
+        if (resultCode == RESULT_OK) {
+            if (requestCode == IMAGE_PICK_GALLERY_CODE) {
                 image_uri = data.getData();
                 productIv.setImageURI(image_uri);
-            }
-            else if(requestCode == IMAGE_PICK_CAMERA_CODE){
+            } else if (requestCode == IMAGE_PICK_CAMERA_CODE) {
                 productIv.setImageURI(image_uri);
             }
         }

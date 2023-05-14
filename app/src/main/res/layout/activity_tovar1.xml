@@ -68,8 +68,8 @@
         android:id="@+id/shopsRL2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbarRL"
-        >
+        android:layout_below="@id/toolbarRL">
+
         <RelativeLayout
             android:id="@+id/tovar12"
 
@@ -94,7 +94,6 @@
                 android:layout_width="20dp"
                 android:layout_height="20sp"
                 android:src="@drawable/shape_circle_03" />
-
 
 
             <LinearLayout
@@ -137,30 +136,25 @@
             </LinearLayout>
 
 
-
-
-
-
         </RelativeLayout>
+
         <Button
             android:id="@+id/btn1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tovar12"
-            android:text="Связаться с менеджером"
-            />
+            android:text="Связаться с менеджером" />
 
 
     </RelativeLayout>
 
 
-
     <RelativeLayout
-        android:visibility="gone"
         android:id="@+id/ordersRL"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbarRL">
+        android:layout_below="@id/toolbarRL"
+        android:visibility="gone">
 
         <!--recyclerview show orders(newest first)-->
         <androidx.recyclerview.widget.RecyclerView

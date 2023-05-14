@@ -1,7 +1,7 @@
 package com.example.chatapp.ksk.models;
 
 public class ModelOrderShop {
-    private String orderId,  orderTime, orderStatus, orderCost, orderBy, OrderFrom, latitude, longitude;
+    private String orderId, orderTime, orderStatus, orderCost, orderBy, OrderFrom, latitude, longitude;
 
     public ModelOrderShop() {
     }

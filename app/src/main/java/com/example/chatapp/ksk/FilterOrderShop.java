@@ -12,7 +12,7 @@ public class FilterOrderShop extends Filter {
     private AdapterOrderShop adapter;
     private ArrayList<ModelOrderShop> filterList;
 
-    public FilterOrderShop(AdapterOrderShop adapter, ArrayList<ModelOrderShop> filterList){
+    public FilterOrderShop(AdapterOrderShop adapter, ArrayList<ModelOrderShop> filterList) {
         this.adapter = adapter;
         this.filterList = filterList;
     }
@@ -21,19 +21,18 @@ public class FilterOrderShop extends Filter {
     protected FilterResults performFiltering(CharSequence constraint) {
 
         FilterResults results = new FilterResults();
-        if (constraint != null && constraint.length() > 0){
+        if (constraint != null && constraint.length() > 0) {
             constraint = constraint.toString().toUpperCase();
 
             ArrayList<ModelOrderShop> filterModels = new ArrayList<>();
-            for (int i =0; i<filterList.size(); i++){
-                if (filterList.get(i).getOrderStatus().toUpperCase().contains(constraint)){
+            for (int i = 0; i < filterList.size(); i++) {
+                if (filterList.get(i).getOrderStatus().toUpperCase().contains(constraint)) {
                     filterModels.add(filterList.get(i));
                 }
             }
             results.count = filterModels.size();
             results.values = filterModels;
-        }
-        else {
+        } else {
             results.count = filterList.size();
             results.values = filterList;
         }

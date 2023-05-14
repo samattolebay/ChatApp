@@ -25,21 +25,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/productIconIV"
             android:layout_toStartOf="@id/nextIV"
+            android:layout_toEndOf="@id/productIconIV"
             android:orientation="vertical">
 
 
             <TextView
                 android:id="@+id/discountedNoteTV"
-                android:layout_alignParentEnd="true"
-                android:textSize="10sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
                 android:background="@drawable/shape_rect_005"
                 android:padding="5dp"
                 android:text="10% OFF"
-                android:textColor="@color/green_gray" />
+                android:textColor="@color/green_gray"
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/titleTV"
@@ -47,39 +47,39 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
-                android:textStyle="bold"
                 android:text="Title"
-                android:textColor="@color/colorPrimaryDark" />
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/descriptionTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
+                android:layout_below="@id/titleTV"
                 android:maxLines="2"
                 android:minLines="2"
+                android:padding="5dp"
                 android:text="Description"
-                android:layout_below="@id/titleTV"
                 android:textColor="@color/colorBlack" />
 
             <TextView
                 android:id="@+id/addToCartTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
+                android:layout_below="@id/descriptionTV"
+                android:drawableStart="@drawable/ic_add_shopping_primary"
+                android:gravity="center_vertical"
                 android:maxLines="2"
                 android:minLines="2"
+                android:padding="5dp"
                 android:text="Add to Cart"
-                android:gravity="center_vertical"
-                android:drawableStart="@drawable/ic_add_shopping_primary"
-                android:layout_below="@id/descriptionTV"
                 android:textColor="@color/colorPrimaryDark" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 android:layout_below="@+id/addToCartTV"
+                android:layout_alignParentEnd="true"
                 android:padding="5dp">
 
                 <TextView

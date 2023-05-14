@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import com.example.chatapp.R;
 
 public class store extends AppCompatActivity {
-    private ImageView next2,next3,next4;
+    private ImageView next2, next3, next4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class store extends AppCompatActivity {
         next2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(store.this,tovar1.class));
+                startActivity(new Intent(store.this, tovar1.class));
             }
         });
     }

@@ -37,7 +37,7 @@ import java.util.Locale;
 
 public class OrderDetailsShopActivity extends AppCompatActivity {
 
-    private String orderId, orderBy, myLatitude, myLongitude, buyerLatitude,buyerLongitude, deliveryFee;
+    private String orderId, orderBy, myLatitude, myLongitude, buyerLatitude, buyerLongitude, deliveryFee;
 
     private ImageButton backBtn, editStatusBtn, mapBtn;
     private TextView orderIdTv, dateTv, orderStatusTv, buyerEmailTv, buyerPhoneTv, totalItemTv, amountTv, deliveryAddressTv;
@@ -105,7 +105,7 @@ public class OrderDetailsShopActivity extends AppCompatActivity {
                 .setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String selectedOption  = options[which];
+                        String selectedOption = options[which];
                         editOrderStatus(selectedOption);
                     }
                 }).show();
@@ -113,7 +113,7 @@ public class OrderDetailsShopActivity extends AppCompatActivity {
 
     private void editOrderStatus(final String selectedOption) {
         HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("orderStatus", ""+selectedOption);
+        hashMap.put("orderStatus", "" + selectedOption);
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
         ref.child(mAuth.getUid()).child("Orders").child(orderId)
@@ -121,13 +121,13 @@ public class OrderDetailsShopActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(OrderDetailsShopActivity.this, "Order is now "+selectedOption, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(OrderDetailsShopActivity.this, "Order is now " + selectedOption, Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(OrderDetailsShopActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(OrderDetailsShopActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -138,12 +138,12 @@ public class OrderDetailsShopActivity extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String orderBy = ""+dataSnapshot.child("orderBy").getValue();
-                        String orderCost = ""+dataSnapshot.child("orderCost").getValue();
-                        String orderId = ""+dataSnapshot.child("orderId").getValue();
-                        String orderStatus = ""+dataSnapshot.child("orderStatus").getValue();
-                        String orderTime = ""+dataSnapshot.child("orderTime").getValue();
-                        String orderFrom = ""+dataSnapshot.child("orderFrom").getValue();
+                        String orderBy = "" + dataSnapshot.child("orderBy").getValue();
+                        String orderCost = "" + dataSnapshot.child("orderCost").getValue();
+                        String orderId = "" + dataSnapshot.child("orderId").getValue();
+                        String orderStatus = "" + dataSnapshot.child("orderStatus").getValue();
+                        String orderTime = "" + dataSnapshot.child("orderTime").getValue();
+                        String orderFrom = "" + dataSnapshot.child("orderFrom").getValue();
 
                         orderCost = orderCost.replaceAll("\\(.*[\\)]", "").replaceAll(" \\(", "").replaceAll("\\)", "");
 
@@ -151,20 +151,18 @@ public class OrderDetailsShopActivity extends AppCompatActivity {
                         calendar.setTimeInMillis(Long.parseLong(orderTime));
                         String formateDate = DateFormat.format("dd/MM/yyyy hh:mm a", calendar).toString();
 
-                        if (orderStatus.equals("In Progress")){
+                        if (orderStatus.equals("In Progress")) {
                             orderStatusTv.setTextColor(getResources().getColor(R.color.colorPrimary));
-                        }
-                        else if (orderStatus.equals("Completed")){
+                        } else if (orderStatus.equals("Completed")) {
                             orderStatusTv.setTextColor(getResources().getColor(R.color.colorGreen));
-                        }
-                        else {
+                        } else {
                             orderStatusTv.setTextColor(getResources().getColor(R.color.colorRed01));
                         }
 
                         orderIdTv.setText(orderId);
                         orderStatusTv.setText(orderStatus);
-                        double total = Double.parseDouble(orderCost)+Double.parseDouble(deliveryFee);
-                        amountTv.setText("$"+ total +" [including $"+ deliveryFee +" Delivery Fee]");
+                        double total = Double.parseDouble(orderCost) + Double.parseDouble(deliveryFee);
+                        amountTv.setText("$" + total + " [including $" + deliveryFee + " Delivery Fee]");
                         dateTv.setText(formateDate);
 
                         findAddress(buyerLatitude, buyerLongitude);
@@ -192,13 +190,13 @@ public class OrderDetailsShopActivity extends AppCompatActivity {
             String state = addresses.get(0).getAdminArea();
             String country = addresses.get(0).getCountryName();
             deliveryAddressTv.setText(address + ", " + city + ", " + state + ", " + country);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
 
         }
     }
 
     String totalItems;
+
     private void loadOrdersItems() {
         orderedItemsArrayList = new ArrayList<>();
 
@@ -214,7 +212,7 @@ public class OrderDetailsShopActivity extends AppCompatActivity {
                         }
                         adapterOrderedItem = new AdapterOrderedItem(OrderDetailsShopActivity.this, orderedItemsArrayList);
                         itemsRv.setAdapter(adapterOrderedItem);
-                        totalItems = ""+dataSnapshot.getChildrenCount();
+                        totalItems = "" + dataSnapshot.getChildrenCount();
                         totalItemTv.setText(totalItems);
                     }
 
@@ -231,9 +229,9 @@ public class OrderDetailsShopActivity extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        myLatitude = ""+dataSnapshot.child("latitude").getValue();
-                        myLongitude = ""+dataSnapshot.child("longitude").getValue();
-                        deliveryFee = ""+dataSnapshot.child("deliveryFee").getValue();
+                        myLatitude = "" + dataSnapshot.child("latitude").getValue();
+                        myLongitude = "" + dataSnapshot.child("longitude").getValue();
+                        deliveryFee = "" + dataSnapshot.child("deliveryFee").getValue();
                     }
 
                     @Override
@@ -249,10 +247,10 @@ public class OrderDetailsShopActivity extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        buyerLatitude = ""+dataSnapshot.child("latitude").getValue();
-                        buyerLongitude = ""+dataSnapshot.child("longitude").getValue();
-                        String email = ""+dataSnapshot.child("email").getValue();
-                        String phone = ""+dataSnapshot.child("phone").getValue();
+                        buyerLatitude = "" + dataSnapshot.child("latitude").getValue();
+                        buyerLongitude = "" + dataSnapshot.child("longitude").getValue();
+                        String email = "" + dataSnapshot.child("email").getValue();
+                        String phone = "" + dataSnapshot.child("phone").getValue();
 
                         buyerEmailTv.setText(email);
                         buyerPhoneTv.setText(phone);
@@ -266,7 +264,7 @@ public class OrderDetailsShopActivity extends AppCompatActivity {
     }
 
     private void openMap() {
-        String address = "https://maps.google.com/maps?saddr="+myLatitude+","+myLongitude+"&daddr="+buyerLatitude+","+buyerLongitude;
+        String address = "https://maps.google.com/maps?saddr=" + myLatitude + "," + myLongitude + "&daddr=" + buyerLatitude + "," + buyerLongitude;
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(address));
         startActivity(intent);
     }
