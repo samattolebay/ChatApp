@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.chatapp.R;
 import com.example.chatapp.ksk.adapters.AdapterCart;
 import com.example.chatapp.ksk.models.ModelCart;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class CartActivity extends AppCompatActivity {
@@ -89,18 +92,90 @@ public class CartActivity extends AppCompatActivity {
                     return;
                 }
 
-                Intent intent = new Intent(CartActivity.this, PaymentActivity.class);
-                intent.putExtra("ShopId", shopId);
-                intent.putExtra("Latitude", myLatitude);
-                intent.putExtra("Longitude", myLongitude);
-//                int upiTotal = Integer.parseInt(grandTotal.getText().toString())+Integer.valueOf(deliveryFee);
-//                Log.d("upiTotal", upiTotal+"");
-                intent.putExtra("GrandTotal", grandTotal.getText().toString().trim());
-                startActivity(intent);
+//                Intent intent = new Intent(CartActivity.this, PaymentActivity.class);
+//                intent.putExtra("ShopId", shopId);
+//                intent.putExtra("Latitude", myLatitude);
+//                intent.putExtra("Longitude", myLongitude);
+////                int upiTotal = Integer.parseInt(grandTotal.getText().toString())+Integer.valueOf(deliveryFee);
+////                Log.d("upiTotal", upiTotal+"");
+//                intent.putExtra("GrandTotal", grandTotal.getText().toString().trim());
+//                startActivity(intent);
+                submitOrder();
             }
         });
 
 
+    }
+
+    private void submitOrder() {
+        mProgressDialog.setMessage("Placing Order....");
+        mProgressDialog.show();
+
+        final String timestamp = "" + System.currentTimeMillis();
+        String cost = grandTotal.getText().toString().replace("$", "").replaceAll("\\(.*?\\)", "").trim();
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("orderId", timestamp);
+        hashMap.put("orderTime", timestamp);
+        hashMap.put("orderStatus", "In Progress");
+        hashMap.put("orderCost", cost);
+        hashMap.put("orderBy", "" + mAuth.getUid());
+        hashMap.put("OrderFrom", "" + shopId);
+        hashMap.put("latitude", myLatitude);
+        hashMap.put("longitude", myLongitude);
+
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users").child(shopId).child("Orders");
+        ref.child(timestamp).setValue(hashMap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getUid());
+                        ValueEventListener valueEventListener = new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                    String finalPrice = "" + ds.child("finalPrice").getValue();
+                                    String productCategory = "" + ds.child("prductCategory").getValue();
+                                    String ItemImage = "" + ds.child("profileImage").getValue();
+                                    String quantity = "" + ds.child("quantity").getValue();
+                                    String title = "" + ds.child("title").getValue();
+                                    String pId = "" + ds.child("productId").getValue();
+
+                                    HashMap<String, String> hashMap1 = new HashMap<>();
+                                    hashMap1.put("finalPrice", finalPrice);
+                                    hashMap1.put("productCategory", productCategory);
+                                    hashMap1.put("ItemImage", ItemImage);
+                                    hashMap1.put("quantity", quantity);
+                                    hashMap1.put("title", title);
+                                    hashMap1.put("pId", pId);
+
+                                    Log.d("title", title);
+
+                                    ref.child(timestamp).child("items").child(pId).setValue(hashMap1);
+                                }
+                                mProgressDialog.dismiss();
+                                Toast.makeText(CartActivity.this, "Order Placed Successfully...", Toast.LENGTH_SHORT).show();
+                                ref1.child("CartItem").child(shopId).removeEventListener(this);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        };
+                        ref1.child("CartItem").child(shopId).addValueEventListener(valueEventListener);
+                        ref1.child("CartItem").removeValue();
+                        finish();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        mProgressDialog.dismiss();
+                        Toast.makeText(CartActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
 

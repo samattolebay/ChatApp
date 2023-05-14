@@ -122,7 +122,7 @@
         android:layout_margin="20dp"
         android:background="@drawable/shape_rect06"
         android:minWidth="150dp"
-        android:text="Төйлеу"
+        android:text="Төлеу"
         android:textColor="@color/colorWhite" />
 
 </RelativeLayout>

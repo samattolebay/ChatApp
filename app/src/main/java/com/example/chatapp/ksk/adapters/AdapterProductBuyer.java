@@ -107,7 +107,7 @@ public class AdapterProductBuyer extends RecyclerView.Adapter<AdapterProductBuye
     private double cost = 0;
     private double finalCost = 0;
     private double actualFinalCost = 0;
-    private int quantity = 0;
+//    private int quantity = 0;
     private void showQuantityDialog(ModelProduct modelProduct) {
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_quantity, null);
 
@@ -119,9 +119,9 @@ public class AdapterProductBuyer extends RecyclerView.Adapter<AdapterProductBuye
         final TextView orignalPriceTV = view.findViewById(R.id.orignalPriceTV);
         TextView discountPriceTV = view.findViewById(R.id.discountPriceTV);
         final TextView finalPriceTV = view.findViewById(R.id.finalPriceTV);
-        ImageButton decreaseBtn = view.findViewById(R.id.decreaseBtn);
-        final TextView quantityTV = view.findViewById(R.id.quantityTV);
-        ImageButton increasBtn = view.findViewById(R.id.increasBtn);
+//        ImageButton decreaseBtn = view.findViewById(R.id.decreaseBtn);
+//        final TextView quantityTV = view.findViewById(R.id.quantityTV);
+//        ImageButton increasBtn = view.findViewById(R.id.increasBtn);
         Button continueBtn = view.findViewById(R.id.continueBtn);
 
         final String productId = modelProduct.getPrductId();
@@ -150,7 +150,7 @@ public class AdapterProductBuyer extends RecyclerView.Adapter<AdapterProductBuye
         cost = Double.parseDouble(price.replaceAll("$", ""));
         finalCost = Double.parseDouble(price.replaceAll("$", ""));
         actualFinalCost = Double.parseDouble(orgnalPrice.replaceAll("$", ""));
-        quantity = 1;
+//        quantity = 1;
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(view);
@@ -165,7 +165,7 @@ public class AdapterProductBuyer extends RecyclerView.Adapter<AdapterProductBuye
         pQuantityTV.setText(""+productQuantity);
         descriptionTV.setText(""+description);
         discountPercentTV.setText(""+discountPercent);
-        quantityTV.setText(""+quantity);
+//        quantityTV.setText(""+quantity);
         orignalPriceTV.setText("$"+modelProduct.getOrignalPrice());
         discountPriceTV.setText("$"+modelProduct.getDiscountPrice());
         finalPriceTV.setText("$"+finalCost);
@@ -173,41 +173,42 @@ public class AdapterProductBuyer extends RecyclerView.Adapter<AdapterProductBuye
         final AlertDialog dialog = builder.create();
         dialog.show();
 
-        increasBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finalCost = finalCost+cost;
-                actualFinalCost = Double.parseDouble(orgnalPrice)+ actualFinalCost;
-                quantity++;
-
-                finalPriceTV.setText("$"+finalCost);
-                quantityTV.setText(""+quantity);
-            }
-        });
-
-        decreaseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (quantity>1) {
-                    finalCost = finalCost - cost;
-                    actualFinalCost = actualFinalCost - Double.parseDouble(orgnalPrice);
-                    quantity--;
-
-                    finalPriceTV.setText("$" + finalCost);
-                    quantityTV.setText("" + quantity);
-                }
-            }
-        });
+//        increasBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finalCost = finalCost+cost;
+//                actualFinalCost = Double.parseDouble(orgnalPrice)+ actualFinalCost;
+//                quantity++;
+//
+//                finalPriceTV.setText("$"+finalCost);
+//                quantityTV.setText(""+quantity);
+//            }
+//        });
+//
+//        decreaseBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (quantity>1) {
+//                    finalCost = finalCost - cost;
+//                    actualFinalCost = actualFinalCost - Double.parseDouble(orgnalPrice);
+//                    quantity--;
+//
+//                    finalPriceTV.setText("$" + finalCost);
+//                    quantityTV.setText("" + quantity);
+//                }
+//            }
+//        });
 
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String title = titleTV.getText().toString().trim();
                 String price = finalPriceTV.getText().toString().trim().replace("", "");
-                String quantity = quantityTV.getText().toString().trim();
+//                String quantity = quantityTV.getText().toString().trim();
                 String actualPrice = "$" + actualFinalCost;
 
-                addToCart(productId, title, price, quantity, image, discountPercent, discountAvailable, category, actualPrice, shopId);
+//                addToCart(productId, title, price, quantity, image, discountPercent, discountAvailable, category, actualPrice, shopId);
+                addToCart(productId, title, price, String.valueOf(1), image, discountPercent, discountAvailable, category, actualPrice, shopId);
                 dialog.dismiss();
             }
         });
