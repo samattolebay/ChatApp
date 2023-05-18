@@ -16,8 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatApp">
         <activity
+            android:name=".ChatActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".activities.Glavny"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".activities.SignUpUserActivity"
             android:exported="false" />
@@ -46,31 +53,31 @@
             </intent-filter>
         </service>
 
-        <activity android:name="com.example.chatapp.ksk.activity.WriteReviewActivity" />
-        <activity android:name="com.example.chatapp.ksk.activity.ShopReviewActivity" />
-        <activity android:name="com.example.chatapp.ksk.activity.OrderDetailsShopActivity" />
-        <activity android:name="com.example.chatapp.ksk.activity.OrderDetailsBuyerActivity" />
-        <activity android:name="com.example.chatapp.ksk.activity.CartActivity" />
+        <activity android:name=".WriteReviewActivity" />
+        <activity android:name=".ShopReviewActivity" />
+        <activity android:name=".OrderDetailsShopActivity" />
+        <activity android:name=".OrderDetailsBuyerActivity" />
+        <activity android:name=".CartActivity" />
         <activity
-            android:name="com.example.chatapp.ksk.activity.ShopDetailsActivity"
+            android:name=".ShopDetailsActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name="com.example.chatapp.ksk.activity.EditProductActivity" />
-        <activity android:name="com.example.chatapp.ksk.activity.AddProductActivity" />
-        <activity android:name="com.example.chatapp.ksk.activity.ProfileEditSellerActivity" />
-        <activity android:name="com.example.chatapp.ksk.activity.ProfileEditBuyerActivity" />
+        <activity android:name=".EditProductActivity" />
+        <activity android:name=".AddProductActivity" />
+        <activity android:name=".ProfileEditSellerActivity" />
+        <activity android:name=".ProfileEditBuyerActivity" />
         <activity
-            android:name="com.example.chatapp.ksk.activity.MainBuyerActivity"
+            android:name=".MainBuyerActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.example.chatapp.ksk.activity.MainSellerActivity"
+            android:name=".MainSellerActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name="com.example.chatapp.ksk.activity.ForgotPasswordActivity" />
-        <activity android:name="com.example.chatapp.ksk.activity.RegisterBuyerActivity" />
-        <activity android:name="com.example.chatapp.ksk.activity.RegisterSellerActivity" />
+        <activity android:name=".ForgotPasswordActivity" />
+        <activity android:name=".RegisterBuyerActivity" />
+        <activity android:name=".RegisterSellerActivity" />
         <activity
-            android:name="com.example.chatapp.ksk.activity.LoginActivity"
+            android:name=".LoginActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name="com.example.chatapp.ksk.activity.SplashActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -85,7 +92,6 @@
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
-
     </application>
 
 </manifest>
