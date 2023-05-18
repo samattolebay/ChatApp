@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.chatapp.R;
 import com.example.chatapp.ksk.adapters.AdapterOrderedItem;
 import com.example.chatapp.ksk.models.ModelOrderedItems;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,6 +35,7 @@ public class OrderDetailsBuyerActivity extends AppCompatActivity {
 
     private ImageButton backBtn, writeReviewBtn;
     private TextView orderIdTv, dateTv, orderStatusTv, shopNameTv, totalIemTv, amountTv, addressTv;
+    private FloatingActionButton openChatBtn;
     private RecyclerView itemsRv;
 
     private FirebaseAuth mAuth;
@@ -46,6 +48,7 @@ public class OrderDetailsBuyerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_details_buyer);
 
+        openChatBtn = findViewById(R.id.openChat);
         backBtn = findViewById(R.id.backBtn);
         orderIdTv = findViewById(R.id.orderIdTV);
         dateTv = findViewById(R.id.dateTV);
@@ -66,6 +69,12 @@ public class OrderDetailsBuyerActivity extends AppCompatActivity {
         loadOrdersDetails();
         loadOrderItems();
 
+        openChatBtn.setOnClickListener(v -> {
+            Intent newIntent = new Intent(this, ChatActivity.class);
+            newIntent.putExtra("receiverId", orderFrom);
+            newIntent.putExtra("orderId", orderId);
+            startActivity(newIntent);
+        });
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -22,6 +22,7 @@ import com.example.chatapp.ksk.adapters.AdapterOrderedItem;
 import com.example.chatapp.ksk.models.ModelOrderedItems;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,6 +43,7 @@ public class OrderDetailsShopActivity extends AppCompatActivity {
     private ImageButton backBtn, editStatusBtn, mapBtn;
     private TextView orderIdTv, dateTv, orderStatusTv, buyerEmailTv, buyerPhoneTv, totalItemTv, amountTv, deliveryAddressTv;
     private RecyclerView itemsRv;
+    private FloatingActionButton openChatBtn;
 
     private ArrayList<ModelOrderedItems> orderedItemsArrayList;
     private AdapterOrderedItem adapterOrderedItem;
@@ -58,6 +60,7 @@ public class OrderDetailsShopActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        openChatBtn = findViewById(R.id.openChat);
         backBtn = findViewById(R.id.backBtn);
         editStatusBtn = findViewById(R.id.editStatusBtn);
         mapBtn = findViewById(R.id.mapBtn);
@@ -76,6 +79,12 @@ public class OrderDetailsShopActivity extends AppCompatActivity {
         loadOrdersdetail();
         loadOrdersItems();
 
+        openChatBtn.setOnClickListener(v -> {
+            Intent newIntent = new Intent(this, ChatActivity.class);
+            newIntent.putExtra("receiverId", orderBy);
+            newIntent.putExtra("orderId", orderId);
+            startActivity(newIntent);
+        });
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

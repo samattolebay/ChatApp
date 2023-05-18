@@ -15,69 +15,69 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatApp">
+        <!--        <activity-->
+        <!--            android:name=".ChatActivity"-->
+        <!--            android:exported="false">-->
+        <!--            <meta-data-->
+        <!--                android:name="android.app.lib_name"-->
+        <!--                android:value="" />-->
+        <!--        </activity>-->
+        <!--        <activity-->
+        <!--            android:name=".activities.Glavny"-->
+        <!--            android:exported="true" />-->
+        <!--        <activity-->
+        <!--            android:name=".activities.SignUpUserActivity"-->
+        <!--            android:exported="false" />-->
+        <!--        <activity android:name="com.example.chatapp.IntroActivity" />-->
         <activity
-            android:name=".ChatActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".activities.Glavny"
-            android:exported="true" />
-        <activity
-            android:name=".activities.SignUpUserActivity"
-            android:exported="false" />
-        <activity android:name="com.example.chatapp.IntroActivity" />
-        <activity
-            android:name=".activities.ChatActivity"
+            android:name=".ksk.activity.ChatActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".activities.UsersActivity" />
-        <activity
-            android:name=".activities.SignUpActivity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".activities.SignInActivity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".activities.SignInActivityAdmin"
-            android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".activities.MainActivity" />
-        <activity android:name=".activities.MainActivityUser" />
+        <!--        <activity android:name=".activities.UsersActivity" />-->
+        <!--        <activity-->
+        <!--            android:name=".activities.SignUpActivity"-->
+        <!--            android:windowSoftInputMode="adjustResize" />-->
+        <!--        <activity-->
+        <!--            android:name=".activities.SignInActivity"-->
+        <!--            android:windowSoftInputMode="adjustResize" />-->
+        <!--        <activity-->
+        <!--            android:name=".activities.SignInActivityAdmin"-->
+        <!--            android:windowSoftInputMode="adjustResize" />-->
+        <!--        <activity android:name=".activities.MainActivity" />-->
+        <!--        <activity android:name=".activities.MainActivityUser" />-->
 
-        <service
-            android:name="com.example.chatapp.firebase.MessagingService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
+<!--        <service-->
+<!--            android:name="com.example.chatapp.firebase.MessagingService"-->
+<!--            android:exported="false">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
+<!--            </intent-filter>-->
+<!--        </service>-->
 
-        <activity android:name=".WriteReviewActivity" />
-        <activity android:name=".ShopReviewActivity" />
-        <activity android:name=".OrderDetailsShopActivity" />
-        <activity android:name=".OrderDetailsBuyerActivity" />
-        <activity android:name=".CartActivity" />
+        <activity android:name=".ksk.activity.WriteReviewActivity" />
+        <activity android:name=".ksk.activity.ShopReviewActivity" />
+        <activity android:name=".ksk.activity.OrderDetailsShopActivity" />
+        <activity android:name=".ksk.activity.OrderDetailsBuyerActivity" />
+        <activity android:name=".ksk.activity.CartActivity" />
         <activity
-            android:name=".ShopDetailsActivity"
+            android:name=".ksk.activity.ShopDetailsActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".EditProductActivity" />
-        <activity android:name=".AddProductActivity" />
-        <activity android:name=".ProfileEditSellerActivity" />
-        <activity android:name=".ProfileEditBuyerActivity" />
+        <activity android:name=".ksk.activity.EditProductActivity" />
+        <activity android:name=".ksk.activity.AddProductActivity" />
+        <activity android:name=".ksk.activity.ProfileEditSellerActivity" />
+        <activity android:name=".ksk.activity.ProfileEditBuyerActivity" />
         <activity
-            android:name=".MainBuyerActivity"
+            android:name=".ksk.activity.MainBuyerActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".MainSellerActivity"
+            android:name=".ksk.activity.MainSellerActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".ForgotPasswordActivity" />
-        <activity android:name=".RegisterBuyerActivity" />
-        <activity android:name=".RegisterSellerActivity" />
+        <activity android:name=".ksk.activity.ForgotPasswordActivity" />
+        <activity android:name=".ksk.activity.RegisterBuyerActivity" />
+        <activity android:name=".ksk.activity.RegisterSellerActivity" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ksk.activity.LoginActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".ksk.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
