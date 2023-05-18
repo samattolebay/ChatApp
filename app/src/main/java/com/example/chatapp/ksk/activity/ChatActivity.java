@@ -1,7 +1,10 @@
 package com.example.chatapp.ksk.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -56,6 +59,7 @@ public class ChatActivity extends AppCompatActivity {
             if (!msg.isEmpty()) {
                 sendMessage(senderUser.getUid(), receiverId, orderId, msg);
                 messageTv.setText("");
+                hideKeyboard();
             }
         });
 
@@ -79,6 +83,15 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
+    private void hideKeyboard() {
+        // Check if no view has focus:
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
     private void readMessage(String senderUserUid, String receiverId, String orderId) {
         List<ChatMessage> messages = new ArrayList<>();
         reference = FirebaseDatabase.getInstance().getReference("Chats");
@@ -95,13 +108,14 @@ public class ChatActivity extends AppCompatActivity {
                     String dt = Objects.requireNonNull(child.child("dateTime").getValue()).toString();
                     if (oId.equals(orderId)) {
 //                        if (sId.equals(senderUserUid))
-                            messages.add(new ChatMessage(sId, rId, msg, dt, oId));
+                        messages.add(new ChatMessage(sId, rId, msg, dt, oId));
 //                        else if (sId.equals(receiverId))
 //                            messages.add(new ChatMessage(rId, sId, msg, dt, oId));
                     }
                 }
                 messageAdapter = new ChatAdapter(messages, "Sol adam", senderUserUid);
                 messagesRv.setAdapter(messageAdapter);
+                messagesRv.scrollToPosition(messages.size() - 1);
             }
 
             @Override
