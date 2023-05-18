@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "823373553431",
-    "project_id": "smartksknew",
-    "storage_bucket": "smartksknew.appspot.com"
+    "project_number": "358439414753",
+    "project_id": "smartksk-2141a",
+    "storage_bucket": "smartksk-2141a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:823373553431:android:64e7d668999023f06a6152",
+        "mobilesdk_app_id": "1:358439414753:android:c2e5ff6e8852620c0780a0",
         "android_client_info": {
           "package_name": "com.example.chatapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "823373553431-9spk47dp0vu0ifdv71u0p1evfqqasdt6.apps.googleusercontent.com",
+          "client_id": "358439414753-b95icpsjll4i1gg4jm6dpngm327kflsn.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBXurJju1hpywDhxPX44aiOlNqJ9eKT-eY"
+          "current_key": "AIzaSyBiMKHSwcfDAYgGJf-LqmY-n0oFmOrGxNk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "823373553431-9spk47dp0vu0ifdv71u0p1evfqqasdt6.apps.googleusercontent.com",
+              "client_id": "358439414753-b95icpsjll4i1gg4jm6dpngm327kflsn.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
