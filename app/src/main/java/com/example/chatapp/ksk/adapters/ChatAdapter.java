@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chatapp.databinding.ItemContainerReceivedMessageBinding;
 import com.example.chatapp.databinding.ItemContainerSentMessageBinding;
-import com.example.chatapp.models.ChatMessage;
+import com.example.chatapp.ksk.models.ChatMessage;
 
 import java.util.List;
 

@@ -15,43 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatApp">
-        <!--        <activity-->
-        <!--            android:name=".ChatActivity"-->
-        <!--            android:exported="false">-->
-        <!--            <meta-data-->
-        <!--                android:name="android.app.lib_name"-->
-        <!--                android:value="" />-->
-        <!--        </activity>-->
-        <!--        <activity-->
-        <!--            android:name=".activities.Glavny"-->
-        <!--            android:exported="true" />-->
-        <!--        <activity-->
-        <!--            android:name=".activities.SignUpUserActivity"-->
-        <!--            android:exported="false" />-->
-        <!--        <activity android:name="com.example.chatapp.IntroActivity" />-->
         <activity
             android:name=".ksk.activity.ChatActivity"
             android:windowSoftInputMode="adjustResize" />
-        <!--        <activity android:name=".activities.UsersActivity" />-->
-        <!--        <activity-->
-        <!--            android:name=".activities.SignUpActivity"-->
-        <!--            android:windowSoftInputMode="adjustResize" />-->
-        <!--        <activity-->
-        <!--            android:name=".activities.SignInActivity"-->
-        <!--            android:windowSoftInputMode="adjustResize" />-->
-        <!--        <activity-->
-        <!--            android:name=".activities.SignInActivityAdmin"-->
-        <!--            android:windowSoftInputMode="adjustResize" />-->
-        <!--        <activity android:name=".activities.MainActivity" />-->
-        <!--        <activity android:name=".activities.MainActivityUser" />-->
-
-<!--        <service-->
-<!--            android:name="com.example.chatapp.firebase.MessagingService"-->
-<!--            android:exported="false">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
-<!--            </intent-filter>-->
-<!--        </service>-->
 
         <activity android:name=".ksk.activity.WriteReviewActivity" />
         <activity android:name=".ksk.activity.ShopReviewActivity" />

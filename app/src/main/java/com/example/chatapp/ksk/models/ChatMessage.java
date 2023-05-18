@@ -1,5 +1,4 @@
-package com.example.chatapp.models;
-
+package com.example.chatapp.ksk.models;
 
 public class ChatMessage {
     public String senderId, receiverId, message, dateTime, orderId;
